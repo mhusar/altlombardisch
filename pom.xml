@@ -87,7 +87,7 @@
                 <wicket.contentType>text/html</wicket.contentType>
                 <wicket.stripWicketTags>true</wicket.stripWicketTags>
                 <db.username>altlombardisch</db.username>
-                <db.password>Yte=LDpuC8KzKrDs</db.password>
+                <db.password></db.password>
                 <db.url>jdbc:mysql://localhost/altlombardisch</db.url>
                 <db.hbm2ddl.auto>validate</db.hbm2ddl.auto>
                 <db.dialect>org.hibernate.dialect.MySQL5Dialect</db.dialect>
@@ -104,7 +104,7 @@
                 <wicket.contentType>text/html</wicket.contentType>
                 <wicket.stripWicketTags>true</wicket.stripWicketTags>
                 <db.username>altlombardisch</db.username>
-                <db.password>Yte=LDpuC8KzKrDs</db.password>
+                <db.password></db.password>
                 <db.url>jdbc:mysql://localhost/altlombardisch</db.url>
                 <db.hbm2ddl.auto>update</db.hbm2ddl.auto>
                 <db.dialect>org.hibernate.dialect.MySQL5Dialect</db.dialect>
@@ -121,7 +121,7 @@
                 <wicket.contentType>text/html</wicket.contentType>
                 <wicket.stripWicketTags>false</wicket.stripWicketTags>
                 <db.username>altlombardisch</db.username>
-                <db.password>Yte=LDpuC8KzKrDs</db.password>
+                <db.password></db.password>
                 <db.url>jdbc:mysql://localhost/altlombardisch</db.url>
                 <db.hbm2ddl.auto>update</db.hbm2ddl.auto>
                 <db.dialect>org.hibernate.dialect.MySQL5Dialect</db.dialect>

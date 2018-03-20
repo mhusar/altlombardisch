@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<head>
+<meta charset="utf-8" />
+</head>
+<body>
+  <wicket:extend>
+    <div class="container">
+      <div class="page-header">
+        <h1>
+          <wicket:label wicket:id="header"></wicket:label>
+        </h1>
+      </div>
+    </div>
+    <div class="container">
+      <form wicket:id="siglumViewForm" class="form-horizontal"
+        role="form">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="taggedName" class="col-sm-2 control-label"><wicket:message
+                  key="Siglum.name"></wicket:message></label>
+              <div class="col-sm-10">
+                <input type="text" wicket:id="taggedName"
+                  id="taggedName" class="form-control"
+                  required="required" maxlength="100"
+                  autofocus="autofocus" readonly="readonly" />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="localization" class="col-sm-4 control-label"><wicket:message
+                  key="Siglum.localization"></wicket:message></label>
+              <div class="col-sm-8">
+                <input type="text" wicket:id="localization"
+                  id="localization" class="form-control" maxlength="100"
+                  readonly="readonly" />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="language" class="col-sm-4 control-label"><wicket:message
+                  key="Siglum.language"></wicket:message></label>
+              <div class="col-sm-8">
+                <input type="text" wicket:id="language" id="language"
+                  class="form-control" maxlength="100"
+                  readonly="readonly" />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="dating" class="col-sm-4 control-label"><wicket:message
+                  key="Siglum.dating"></wicket:message></label>
+              <div class="col-sm-8">
+                <input type="text" wicket:id="dating" id="dating"
+                  class="form-control" maxlength="100"
+                  readonly="readonly" />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="numericalDating"
+                class="col-sm-4 control-label"><wicket:message
+                  key="Siglum.numericalDating"></wicket:message></label>
+              <div class="col-sm-8">
+                <input type="number" wicket:id="numericalDating"
+                  id="numericalDating" class="form-control"
+                  maxlength="4" readonly="readonly" />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="singularDate" class="col-sm-4 control-label"><wicket:message
+                  key="Siglum.singularDate"></wicket:message></label>
+              <div class="col-sm-8">
+                <input type="text" wicket:id="singularDate"
+                  id="singularDate" class="form-control" maxlength="100"
+                  readonly="readonly" />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="numericalSingularDate"
+                class="col-sm-4 control-label"><wicket:message
+                  key="Siglum.numericalSingularDate"></wicket:message></label>
+              <div class="col-sm-8">
+                <input type="number" wicket:id="numericalSingularDate"
+                  id="numericalSingularDate" class="form-control"
+                  maxlength="4" readonly="readonly" />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group">
+              <label class="col-sm-2 control-label"><wicket:message
+                  key="Siglum.text"></wicket:message></label>
+              <div class="col-sm-10">
+                <div wicket:id="text"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="name" class="col-sm-2 control-label"><wicket:message
+                  key="Siglum.type"></wicket:message></label>
+              <div class="col-sm-10">
+                <select wicket:id="type" id="type" class="form-control"
+                  disabled="disabled"></select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <div class="col-sm-offset-4 col-sm-8">
+                <label class="checkbox-inline"> <input
+                  type="checkbox" wicket:id="gascon" disabled="disabled" />
+                  <wicket:message key="Siglum.gascon"></wicket:message>
+                </label> <label class="checkbox-inline"> <input
+                  type="checkbox" wicket:id="occitan"
+                  disabled="disabled" /> <wicket:message
+                    key="Siglum.occitan"></wicket:message>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="position" class="col-sm-4 control-label"><wicket:message
+                  key="Siglum.position"></wicket:message></label>
+              <div class="col-sm-8">
+                <input type="text" wicket:id="position"
+                  id="position" class="form-control" maxlength="100"
+                  readonly="readonly" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox no-padding-top">
+                  <label> <input type="checkbox"
+                    wicket:id="unnecessary" disabled="disabled" /> <wicket:message
+                      key="Siglum.unnecessary"></wicket:message>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="button" wicket:id="toIndexButton"
+                  class="btn btn-default">
+                  <wicket:message key="Action.toIndex"></wicket:message>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </wicket:extend>
+</body>
+</html>

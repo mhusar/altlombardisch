@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+  <entry key="container.textarea.StringValidator.exact">Der Inhalt des Feldes ${label} ist nicht ${exact}
+    Zeichen lang.</entry>
+  <entry key="container.textarea.StringValidator.range">Der Inhalt des Feldes ${label} ist nicht zwischen
+    ${minimum} und ${maximum} Zeichen lang.</entry>
+  <entry key="container.textarea.StringValidator.minimum">Der Inhalt des Feldes ${label} ist weniger als
+    ${minimum} Zeichen lang.</entry>
+  <entry key="container.textarea.StringValidator.maximum">Der Inhalt des Feldes ${label} ist mehr als
+    ${maximum} Zeichen lang.</entry>
+</properties>

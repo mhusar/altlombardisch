@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+  <entry key="AccessDeniedPage.header">Zugriff verweigert</entry>
+  <entry key="AccessDeniedPage.message">Der Zugriff auf die angeforderte Seite wurde
+    verweigert.</entry>
+  <entry key="AccessDeniedPage.redirection">Übersicht</entry>
+  <entry key="Action.batchProcessing">Stapelverarbeitung</entry>
+  <entry key="Action.cancel">Abbrechen</entry>
+  <entry key="Action.continue">Weiter</entry>
+  <entry key="Action.correct">Korrigieren</entry>
+  <entry key="Action.correction">Korrektur</entry>
+  <entry key="Action.delete">Löschen</entry>
+  <entry key="Action.done">Fertig</entry>
+  <entry key="Action.edit">Bearbeiten</entry>
+  <entry key="Action.filter">Filtern</entry>
+  <entry key="Action.toIndex">Zum Index</entry>
+  <entry key="Action.intermediateStorage">Zwischenspeichern</entry>
+  <entry key="Action.open">Öffnen</entry>
+  <entry key="Action.save">Speichern</entry>
+  <entry key="Action.view">Ansehen</entry>
+  <entry key="Character.character">Sonderzeichen</entry>
+  <entry key="Character.position">Position</entry>
+  <entry key="CharacterEditPage.addCharacter">Sonderzeichen hinzufügen</entry>
+  <entry key="CharacterEditPage.character-is-non-unique">Dieses Sonderzeichen gibt es bereits.</entry>
+  <entry key="CharacterEditPage.header">Sonderzeichen bearbeiten</entry>
+  <entry key="CharacterViewPanel.dummyItemText">Kein Eintrag vorhanden</entry>
+  <entry key="EditableSiglumListPanel.addSiglum">Sigel hinzufügen</entry>
+  <entry key="FilterPanelColumn.clear">Aufheben</entry>
+  <entry key="FilterPanelColumn.go">Filtern</entry>
+  <entry key="HeaderPanel.categories">Onomasiologische Kategorien</entry>
+  <entry key="HeaderPanel.logout">Abmelden</entry>
+  <entry key="HeaderPanel.overview">Übersicht</entry>
+  <entry key="HeaderPanel.packages">Zettelkästen</entry>
+  <entry key="HeaderPanel.siglums">Sigel</entry>
+  <entry key="HeaderPanel.toggleNavigation">Navigation umschalten</entry>
+  <entry key="HeaderPanel.users">Benutzerverwaltung</entry>
+  <entry key="HomePage.administration">Verwaltung</entry>
+  <entry key="HomePage.characters">Sonderzeichen</entry>
+  <entry key="HomePage.dataMaintenance">Datenpflege</entry>
+  <entry key="HomePage.categories">Kategorien</entry>
+  <entry key="HomePage.overview">Übersicht</entry>
+  <entry key="HomePage.packages">Zettelkästen</entry>
+  <entry key="HomePage.siglums">Sigel</entry>
+  <entry key="HomePage.users">Benutzer</entry>
+  <entry key="InputPanel.insertTag">Tag einfügen</entry>
+  <entry key="InputPanel.tabDialogTitleStart">Attribute für Tag </entry>
+  <entry key="InputPanel.tabDialogTitleEnd"></entry>
+  <entry key="HomePage.documentDefinitions">Dokumentenaufbau</entry>
+  <entry key="LanguageCheckboxValidator.select-at-least-one-language">Wählen Sie mindestens eine der Sprachen
+    {0} oder {1} aus.</entry>
+  <entry key="LockingErrorPage.details">Details</entry>
+  <entry key="LockingErrorPage.entityName">Objekttyp</entry>
+  <entry key="LockingErrorPage.identifier">Bezeichner</entry>
+  <entry key="LockingErrorPage.exceptionMessage">Fehlermeldung</entry>
+  <entry key="LockingErrorPage.redirection">Übersicht</entry>
+  <entry key="LockingErrorPage.removeMessage">Der zu löschende Datensatz wurde in der Zwischenzeit
+    bearbeitet oder gelöscht. Um Konflikte zu vermeiden, wird das Löschen
+    verweigert.</entry>
+  <entry key="LockingErrorPage.saveMessage">Der bearbeitete Datensatz wurde in der Zwischenzeit
+    bereits bearbeitet. Um Konflikte zu vermeiden, wird das Speichern
+    verweigert.</entry>
+  <entry key="LockingErrorPage.removeHeader">Löschen verweigert</entry>
+  <entry key="LockingErrorPage.saveHeader">Speichern verweigert</entry>
+  <entry key="PageExpiredPage.header">Seite abgelaufen</entry>
+  <entry key="PageExpiredPage.message">Leider ist die von Ihnen angeforderte Seite
+    abgelaufen.</entry>
+  <entry key="PageExpiredPage.redirection">Übersicht</entry>
+  <entry key="PagingNavigator.firstItem">Anfang</entry>
+  <entry key="PagingNavigator.prevItem">Zurück</entry>
+  <entry key="PagingNavigator.nextItem">Weiter</entry>
+  <entry key="PagingNavigator.lastItem">Ende</entry>
+  <entry key="Role.STUDENT">Hiwi</entry>
+  <entry key="Role.USER">Redaktor</entry>
+  <entry key="Role.ADMIN">Administrator</entry>
+  <entry key="Siglum.dating">Datierung</entry>
+  <entry key="Siglum.newSiglum">Neues Sigel</entry>
+  <entry key="Siglum.name">Name</entry>
+  <entry key="Siglum.text">Text</entry>
+  <entry key="Siglum.type">Literaturtyp</entry>
+  <entry key="SiglumDeleteConfirmPanel.confirm">Sigel löschen</entry>
+  <entry key="SiglumDeleteConfirmPanel.message">Möchten Sie das Sigel {0} wirklich löschen ?</entry>
+  <entry key="SiglumDeleteConfirmPanel.title">Sigel löschen</entry>
+  <entry key="SiglumDeleteDeniedPanel.confirm">Schließen</entry>
+  <entry key="SiglumDeleteDeniedPanel.message">Mindestens ein Zettel trägt das Sigel {0}.</entry>
+  <entry key="SiglumDeleteDeniedPanel.title">Löschen nicht möglich</entry>
+  <entry key="SiglumEditForm.siglum-is-non-unique">Ein Sigel mit diesem Namen existiert bereits.</entry>
+  <entry key="SiglumEditForm.type-is-required">Bitte wählen Sie einen Literaturtyp für das Sigel aus.</entry>
+  <entry key="SiglumEditPage.correctHeader">Sigel korrigieren</entry>
+  <entry key="SiglumEditPage.editHeader">Sigel bearbeiten</entry>
+  <entry key="SiglumEditPage.newHeader">Sigel erstellen</entry>
+  <entry key="SiglumIndexPage.header">Sigel</entry>
+  <entry key="SiglumIndexPage.name">Name</entry>
+  <entry key="SiglumIndexPage.new">Sigel erstellen</entry>
+  <entry key="SiglumViewPage.header">Sigel ansehen</entry>
+  <entry key="SignInPage.header">Bitte anmelden</entry>
+  <entry key="SignInPage.passwordWrongMessage">Das genannte Passwort ist falsch.</entry>
+  <entry key="SignInPage.password">Passwort</entry>
+  <entry key="SignInPage.signIn">Anmelden</entry>
+  <entry key="SignInPage.userNotEnabledMessage">Dieser Benutzer ist nicht aktiviert.</entry>
+  <entry key="SignInPage.username">Benutzername</entry>
+  <entry key="SignInPage.userUnknownMessage">Dieser Benutzer ist nicht bekannt.</entry>
+  <entry key="TitleLabel.branding"> - Altlombardisch</entry>
+  <entry key="Type.PRIMARY">Primärliteratur</entry>
+  <entry key="Type.SECONDARY">Sekundärliteratur</entry>
+  <entry key="Type.TERTIARY">Tertiärliteratur</entry>
+  <entry key="UnresolvableObjectErrorPage.details">Details</entry>
+  <entry key="UnresolvableObjectErrorPage.entityName">Objekttyp</entry>
+  <entry key="UnresolvableObjectErrorPage.identifier">Bezeichner</entry>
+  <entry key="UnresolvableObjectErrorPage.exceptionMessage">Fehlermeldung</entry>
+  <entry key="UnresolvableObjectErrorPage.redirection">Übersicht</entry>
+  <entry key="UnresolvableObjectErrorPage.removeMessage">Der zu löschende Datensatz ist nicht auffindbar. Das
+    Löschen ist nicht möglich.</entry>
+  <entry key="UnresolvableObjectErrorPage.saveMessage">Der bearbeitete Datensatz ist nicht auffindbar. Das
+    Speichern ist nicht möglich.</entry>
+  <entry key="UnresolvableObjectErrorPage.removeHeader">Löschen nicht möglich</entry>
+  <entry key="UnresolvableObjectErrorPage.saveHeader">Speichern nicht möglich</entry>
+  <entry key="User.enabled">Aktiviert</entry>
+  <entry key="User.password">Kennwort</entry>
+  <entry key="User.realName">Klarname</entry>
+  <entry key="User.role">Rolle</entry>
+  <entry key="User.username">Benutzername</entry>
+  <entry key="UserDeleteDeniedPanel.confirm">Schließen</entry>
+  <entry key="UserDeleteDeniedPanel.message">Der Benutzer {0} hat mindestens einen Zettelkasten.</entry>
+  <entry key="UserDeleteDeniedPanel.title">Löschen nicht möglich</entry>
+  <entry key="UserEditForm.realName-is-non-unique">Ein Benutzer mit diesem Namen existiert
+    bereits.</entry>
+  <entry key="UserEditForm.role-is-required">Bitte wählen Sie eine Rolle für den Benutzer aus.</entry>
+  <entry key="UserEditForm.username-is-non-unique">Ein Benutzer mit diesem Benutzernamen existiert
+    bereits.</entry>
+  <entry key="UserEditPage.addUser">Benutzer hinzufügen</entry>
+  <entry key="UserEditPage.header">Benutzerverwaltung</entry>
+  <entry key="XmlAttributeDefinitionEditForm.name-is-non-unique">Ein Attribut mit diesem Namen existiert bereits.</entry>
+  <entry key="XmlAttributeDefinitionEditPage.addDefinition">Attribut hinzufügen</entry>
+  <entry key="XmlAttributeDefinitionViewPanel.dummyItemText">Kein Eintrag vorhanden</entry>
+  <entry key="XmlAttributeDefinitionEditPage.editTag">← Tag</entry>
+  <entry key="XmlAttributeDefinitionEditPage.header">Attribute bearbeiten</entry>
+  <entry key="XmlAttributeDefinition.name">Name</entry>
+  <entry key="XmlAttributeDefinition.required">Attribut ist notwendig</entry>
+  <entry key="XmlDocumentDefinition.rootElement">Wurzelelement</entry>
+  <entry key="XmlDocumentDefinition.schema">Schema</entry>
+  <entry key="XmlDocumentDefinitionAjaxView.fontMarkup">Schriftauszeichung</entry>
+  <entry key="XmlDocumentDefinitionAjaxView.siglumTextMarkup">Sigeltext</entry>
+  <entry key="XmlDocumentDefinitionEditPage.editTags">Tags →</entry>
+  <entry key="XmlDocumentDefinitionEditPage.header">Dokumentenaufbau</entry>
+  <entry key="XmlDocumentDefinitionViewPanel.dummyItemText">Kein Eintrag vorhanden</entry>
+  <entry key="XmlEditor.validatorMessage">Fehler bei XML-Validierung. Mehrzeiliges Eingabefeld
+    {0}, Zeile {1}, Spalte {2}, Fehlermeldung: {3}</entry>
+  <entry key="XmlTagDefinitionViewPanel.dummyItemText">Kein Eintrag vorhanden</entry>
+  <entry key="XmlTagDefinition.name">Name</entry>
+  <entry key="XmlTagDefinition.selfClosing">Tag ist selbstschließend</entry>
+  <entry key="XmlTagDefinitionEditForm.name-is-non-unique">Ein Tag mit diesem Namen existiert bereits.</entry>
+  <entry key="XmlTagDefinitionEditPage.addDefinition">Tag hinzufügen</entry>
+  <entry key="XmlTagDefinitionEditPage.editAttributes">Attribute →</entry>
+  <entry key="XmlTagDefinitionEditPage.editDocument">← Dokument</entry>
+  <entry key="XmlTagDefinitionEditPage.header">Tags bearbeiten</entry>
+  <entry key="XmlTextField.validatorMessage">Fehler bei XML-Validierung. Eingabefeld {0}, Spalte
+    {1}, Fehlermeldung: {2}</entry>
+</properties>

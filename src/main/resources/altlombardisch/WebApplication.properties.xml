@@ -7,9 +7,7 @@
   <entry key="AccessDeniedPage.redirection">Übersicht</entry>
   <entry key="Action.batchProcessing">Stapelverarbeitung</entry>
   <entry key="Action.cancel">Abbrechen</entry>
-  <entry key="Action.continue">Weiter</entry>
   <entry key="Action.delete">Löschen</entry>
-  <entry key="Action.done">Fertig</entry>
   <entry key="Action.edit">Bearbeiten</entry>
   <entry key="Action.filter">Filtern</entry>
   <entry key="Action.toIndex">Zum Index</entry>
@@ -26,27 +24,21 @@
   <entry key="EditableSiglumListPanel.addSiglum">Sigel hinzufügen</entry>
   <entry key="FilterPanelColumn.clear">Aufheben</entry>
   <entry key="FilterPanelColumn.go">Filtern</entry>
-  <entry key="HeaderPanel.categories">Onomasiologische Kategorien</entry>
   <entry key="HeaderPanel.logout">Abmelden</entry>
   <entry key="HeaderPanel.overview">Übersicht</entry>
-  <entry key="HeaderPanel.packages">Zettelkästen</entry>
   <entry key="HeaderPanel.siglums">Sigel</entry>
   <entry key="HeaderPanel.toggleNavigation">Navigation umschalten</entry>
   <entry key="HeaderPanel.users">Benutzerverwaltung</entry>
   <entry key="HomePage.administration">Verwaltung</entry>
   <entry key="HomePage.characters">Sonderzeichen</entry>
   <entry key="HomePage.dataMaintenance">Datenpflege</entry>
-  <entry key="HomePage.categories">Kategorien</entry>
   <entry key="HomePage.overview">Übersicht</entry>
-  <entry key="HomePage.packages">Zettelkästen</entry>
   <entry key="HomePage.siglums">Sigel</entry>
   <entry key="HomePage.users">Benutzer</entry>
   <entry key="InputPanel.insertTag">Tag einfügen</entry>
   <entry key="InputPanel.tabDialogTitleStart">Attribute für Tag </entry>
   <entry key="InputPanel.tabDialogTitleEnd"></entry>
   <entry key="HomePage.documentDefinitions">Dokumentenaufbau</entry>
-  <entry key="LanguageCheckboxValidator.select-at-least-one-language">Wählen Sie mindestens eine der Sprachen
-    {0} oder {1} aus.</entry>
   <entry key="LockingErrorPage.details">Details</entry>
   <entry key="LockingErrorPage.entityName">Objekttyp</entry>
   <entry key="LockingErrorPage.identifier">Bezeichner</entry>
@@ -71,7 +63,6 @@
   <entry key="Role.STUDENT">Hiwi</entry>
   <entry key="Role.USER">Redaktor</entry>
   <entry key="Role.ADMIN">Administrator</entry>
-  <entry key="Siglum.dating">Datierung</entry>
   <entry key="Siglum.newSiglum">Neues Sigel</entry>
   <entry key="Siglum.name">Name</entry>
   <entry key="Siglum.text">Text</entry>

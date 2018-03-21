@@ -78,8 +78,6 @@ public class SiglumEditForm extends Form<Siglum> {
                         Arrays.asList(SiglumType.Type.values())),
                 new EnumChoiceRenderer<SiglumType.Type>(), 1);
         Button saveButton = new SaveButton("saveButton");
-        Button continueButton = new ContinueButton("continueButton");
-        Button doneButton = new DoneButton("doneButton");
 
         add(new FeedbackPanel().setEscapeModelStrings(false)
                 .setOutputMarkupId(true));
@@ -89,8 +87,6 @@ public class SiglumEditForm extends Form<Siglum> {
         add(new IntermediateStorageButton("intermediateStorageButton", this));
         add(new CancelButton("cancelButton"));
         add(saveButton);
-        add(continueButton);
-        add(doneButton);
         add(new DeleteButton("deleteButton", getModel())
                 .setVisible(!(isSiglumTransient(getModel()))));
 
@@ -248,46 +244,6 @@ public class SiglumEditForm extends Form<Siglum> {
          *            ID of the button
          */
         public SaveButton(String id) {
-            super(id);
-        }
-    }
-
-    /**
-     * A button which submits this form.
-     */
-    private final class ContinueButton extends Button {
-        /**
-         * Determines if a deserialized file is compatible with this class.
-         */
-        private static final long serialVersionUID = 1L;
-
-        /**
-         * Creates a new continue button.
-         * 
-         * @param id
-         *            ID of the button
-         */
-        public ContinueButton(String id) {
-            super(id);
-        }
-    }
-
-    /**
-     * A button which submits this form.
-     */
-    private final class DoneButton extends Button {
-        /**
-         * Determines if a deserialized file is compatible with this class.
-         */
-        private static final long serialVersionUID = 1L;
-
-        /**
-         * Creates a new done button.
-         * 
-         * @param id
-         *            ID of the button
-         */
-        public DoneButton(String id) {
             super(id);
         }
     }

@@ -1,12 +1,12 @@
 package altlombardisch.siglum;
 
-import java.util.Locale;
-
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.util.convert.ConversionException;
 import org.apache.wicket.util.convert.IConverter;
 import org.hibernate.LazyInitializationException;
+
+import java.util.Locale;
 
 /**
  * A text field converting siglum names to siglums.

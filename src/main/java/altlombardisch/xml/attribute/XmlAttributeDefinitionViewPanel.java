@@ -1,14 +1,13 @@
 package altlombardisch.xml.attribute;
 
 import altlombardisch.ui.AjaxView;
+import altlombardisch.xml.tag.XmlTagDefinition;
 import org.apache.wicket.Page;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;
-
-import altlombardisch.xml.tag.XmlTagDefinition;
 
 /**
  * A panel with a view which displays XML attribute definitions.

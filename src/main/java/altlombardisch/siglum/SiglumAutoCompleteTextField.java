@@ -1,10 +1,5 @@
 package altlombardisch.siglum;
 
-import java.util.List;
-
-import javax.json.Json;
-import javax.json.JsonArrayBuilder;
-
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AbstractAjaxBehavior;
 import org.apache.wicket.markup.head.IHeaderResponse;
@@ -14,6 +9,10 @@ import org.apache.wicket.request.IRequestParameters;
 import org.apache.wicket.request.Request;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.request.handler.TextRequestHandler;
+
+import javax.json.Json;
+import javax.json.JsonArrayBuilder;
+import java.util.List;
 
 /**
  * A text field able to auto complete siglum names.

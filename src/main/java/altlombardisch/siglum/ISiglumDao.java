@@ -1,8 +1,8 @@
 package altlombardisch.siglum;
 
-import java.util.List;
-
 import altlombardisch.data.IDao;
+
+import java.util.List;
 
 /**
  * Defines a siglum DAO by extending interface IDao.

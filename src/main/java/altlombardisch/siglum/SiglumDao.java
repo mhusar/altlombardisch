@@ -1,17 +1,16 @@
 package altlombardisch.siglum;
 
-import java.util.List;
-import java.util.UUID;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import javax.persistence.TypedQuery;
-
 import altlombardisch.data.EntityManagerListener;
+import altlombardisch.data.GenericDao;
 import org.hibernate.StaleObjectStateException;
 import org.hibernate.UnresolvableObjectException;
 
-import altlombardisch.data.GenericDao;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.OptimisticLockException;
+import javax.persistence.TypedQuery;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Represents a Data Access Object providing data operations for siglums.
@@ -163,7 +162,7 @@ public class SiglumDao extends GenericDao<Siglum> implements ISiglumDao {
                 transaction.rollback();
             }
 
-            if (e instanceof StaleObjectStateException) {
+            if (e instanceof OptimisticLockException || e instanceof StaleObjectStateException) {
                 panicOnSaveLockingError(siglum, e);
             } else if (e instanceof UnresolvableObjectException) {
                 panicOnSaveUnresolvableObjectError(siglum, e);
@@ -198,7 +197,7 @@ public class SiglumDao extends GenericDao<Siglum> implements ISiglumDao {
                 transaction.rollback();
             }
 
-            if (e instanceof StaleObjectStateException) {
+            if (e instanceof OptimisticLockException || e instanceof StaleObjectStateException) {
                 panicOnSaveLockingError(siglum, e);
             } else if (e instanceof UnresolvableObjectException) {
                 panicOnSaveUnresolvableObjectError(siglum, e);

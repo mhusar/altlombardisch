@@ -1,11 +1,9 @@
 package altlombardisch.siglum;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import altlombardisch.auth.WebSession;
 import altlombardisch.data.GenericDataProvider;
 import altlombardisch.table.GenericDataTable;
+import altlombardisch.table.TextFilterColumn;
 import altlombardisch.ui.TitleLabel;
 import altlombardisch.ui.page.IndexBasePage;
 import altlombardisch.ui.panel.FeedbackPanel;
@@ -21,7 +19,8 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Fragment;
 import org.apache.wicket.model.Model;
 
-import altlombardisch.table.TextFilterColumn;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * An index page that lists all available siglums in a data table.

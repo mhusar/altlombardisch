@@ -1,14 +1,13 @@
 package altlombardisch.siglum;
 
 import altlombardisch.table.GenericDataTable;
+import altlombardisch.ui.panel.ModalMessagePanel;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.authorization.Action;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeAction;
 import org.apache.wicket.model.StringResourceModel;
-
-import altlombardisch.ui.panel.ModalMessagePanel;
 
 /**
  * A panel containing a modal window dialog asking if a siglum shall be deleted.

@@ -8,6 +8,7 @@ import org.hibernate.UnresolvableObjectException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.OptimisticLockException;
 import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.UUID;
@@ -57,7 +58,7 @@ public class XmlTagDefinitionDao extends GenericDao<XmlTagDefinition> implements
                 transaction.rollback();
             }
 
-            if (e instanceof StaleObjectStateException) {
+            if (e instanceof OptimisticLockException || e instanceof StaleObjectStateException) {
                 panicOnSaveLockingError(definition, e);
             } else if (e instanceof UnresolvableObjectException) {
                 panicOnSaveUnresolvableObjectError(definition, e);
@@ -91,7 +92,7 @@ public class XmlTagDefinitionDao extends GenericDao<XmlTagDefinition> implements
                 transaction.rollback();
             }
 
-            if (e instanceof StaleObjectStateException) {
+            if (e instanceof OptimisticLockException || e instanceof StaleObjectStateException) {
                 panicOnSaveLockingError(definition, e);
             } else if (e instanceof UnresolvableObjectException) {
                 panicOnSaveUnresolvableObjectError(definition, e);

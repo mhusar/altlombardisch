@@ -1,9 +1,9 @@
 package altlombardisch.xml.tag;
 
-import java.util.List;
-
 import altlombardisch.data.IDao;
 import altlombardisch.xml.document.XmlDocumentDefinition;
+
+import java.util.List;
 
 /**
  * Defines a tag definition DAO by extending interface IDao.

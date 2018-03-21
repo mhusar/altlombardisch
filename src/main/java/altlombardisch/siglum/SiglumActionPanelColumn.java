@@ -1,20 +1,16 @@
 package altlombardisch.siglum;
 
-import org.apache.wicket.Component;
+import altlombardisch.auth.UserRoles;
+import altlombardisch.auth.WebSession;
+import altlombardisch.table.FilterPanelColumn;
+import altlombardisch.ui.panel.ModalMessagePanel;
+import altlombardisch.user.User;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.extensions.markup.html.repeater.data.grid.ICellPopulator;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
-import org.apache.wicket.model.StringResourceModel;
-
-import altlombardisch.auth.UserRoles;
-import altlombardisch.auth.WebSession;
-import altlombardisch.table.FilterPanelColumn;
-import altlombardisch.ui.panel.ModalMessagePanel;
-import altlombardisch.user.User;
 
 /**
  * A custom column with actions for siglums and and a filter panel as filter.

@@ -1,27 +1,21 @@
 package altlombardisch.xml;
 
-import java.io.IOException;
-import java.io.StringReader;
-import java.util.List;
-
-import javax.json.Json;
-import javax.json.JsonArray;
-import javax.json.JsonArrayBuilder;
-import javax.json.JsonObject;
-import javax.json.JsonObjectBuilder;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.w3c.dom.Document;
-import org.xml.sax.InputSource;
-import org.xml.sax.SAXException;
-
 import altlombardisch.xml.attribute.XmlAttributeDefinition;
 import altlombardisch.xml.attribute.XmlAttributeDefinitionDao;
 import altlombardisch.xml.document.XmlDocumentDefinition;
 import altlombardisch.xml.tag.XmlTagDefinition;
 import altlombardisch.xml.tag.XmlTagDefinitionDao;
+import org.w3c.dom.Document;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+
+import javax.json.*;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import java.io.IOException;
+import java.io.StringReader;
+import java.util.List;
 
 /**
  * A helper class with methods and constants for XML-related tasks.

@@ -1,14 +1,13 @@
 package altlombardisch.ui.xml;
 
-import javax.json.JsonObject;
-
+import altlombardisch.xml.TagDataProvider;
 import altlombardisch.xml.XmlHelper;
+import altlombardisch.xml.document.XmlDocumentDefinition;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.form.TextField;
 
-import altlombardisch.xml.TagDataProvider;
-import altlombardisch.xml.document.XmlDocumentDefinition;
+import javax.json.JsonObject;
 
 /**
  * A text field able validate against XML document definitions.

@@ -15,6 +15,7 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.OptimisticLockException;
 import javax.persistence.TypedQuery;
 import javax.xml.bind.DatatypeConverter;
 import java.security.MessageDigest;
@@ -87,7 +88,7 @@ public class UserDao extends GenericDao<User> implements IUserDao {
                 transaction.rollback();
             }
 
-            if (e instanceof StaleObjectStateException) {
+            if (e instanceof OptimisticLockException || e instanceof StaleObjectStateException) {
                 panicOnSaveLockingError(user, e);
             } else if (e instanceof UnresolvableObjectException) {
                 panicOnSaveUnresolvableObjectError(user, e);

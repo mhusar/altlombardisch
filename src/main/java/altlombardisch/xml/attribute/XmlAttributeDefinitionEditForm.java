@@ -1,7 +1,5 @@
 package altlombardisch.xml.attribute;
 
-import java.util.Iterator;
-
 import altlombardisch.ui.AjaxView;
 import altlombardisch.ui.panel.FeedbackPanel;
 import altlombardisch.xml.document.XmlDocumentDefinition;
@@ -25,6 +23,8 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.validation.IValidatable;
 import org.apache.wicket.validation.IValidator;
 import org.apache.wicket.validation.ValidationError;
+
+import java.util.Iterator;
 
 /**
  * An edit form for XML attribute definitions.

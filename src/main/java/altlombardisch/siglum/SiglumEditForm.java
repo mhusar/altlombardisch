@@ -1,10 +1,13 @@
 package altlombardisch.siglum;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
+import altlombardisch.ui.SubmitLink;
+import altlombardisch.ui.panel.FeedbackPanel;
+import altlombardisch.ui.panel.ModalMessagePanel;
+import altlombardisch.ui.xml.XmlEditor;
 import altlombardisch.ui.xml.XmlTextField;
 import altlombardisch.xml.XmlHelper;
+import altlombardisch.xml.document.XmlDocumentDefinition;
+import altlombardisch.xml.document.XmlDocumentDefinitionDao;
 import org.apache.wicket.Page;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
@@ -20,12 +23,8 @@ import org.apache.wicket.validation.IValidatable;
 import org.apache.wicket.validation.IValidator;
 import org.apache.wicket.validation.ValidationError;
 
-import altlombardisch.ui.SubmitLink;
-import altlombardisch.ui.panel.FeedbackPanel;
-import altlombardisch.ui.panel.ModalMessagePanel;
-import altlombardisch.ui.xml.XmlEditor;
-import altlombardisch.xml.document.XmlDocumentDefinition;
-import altlombardisch.xml.document.XmlDocumentDefinitionDao;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * A form for editing siglums.

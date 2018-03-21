@@ -1,10 +1,7 @@
 package altlombardisch.xml.tag;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import altlombardisch.ui.AjaxView;
+import altlombardisch.xml.document.XmlDocumentDefinition;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.markup.html.basic.Label;
@@ -12,7 +9,9 @@ import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 
-import altlombardisch.xml.document.XmlDocumentDefinition;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * An asynchronously refreshing repeating view for tag definitions.

@@ -1,12 +1,11 @@
 package altlombardisch.xml.document;
 
+import altlombardisch.auth.WebSession;
 import altlombardisch.ui.TitleLabel;
+import altlombardisch.ui.page.BasePage;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
-
-import altlombardisch.auth.WebSession;
-import altlombardisch.ui.page.BasePage;
 
 /**
  * A page containing an edit form for XML document definitions.

@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.OptimisticLockException;
 import javax.persistence.TypedQuery;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
@@ -65,7 +66,7 @@ public abstract class GenericDao<E> implements IDao<E> {
                 transaction.rollback();
             }
 
-            if (e instanceof StaleObjectStateException) {
+            if (e instanceof OptimisticLockException || e instanceof StaleObjectStateException) {
                 panicOnSaveLockingError(entity, e);
             } else if (e instanceof UnresolvableObjectException) {
                 panicOnSaveUnresolvableObjectError(entity, e);

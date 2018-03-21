@@ -1,7 +1,5 @@
 package altlombardisch.siglum;
 
-import java.util.LinkedHashSet;
-
 import altlombardisch.auth.WebSession;
 import altlombardisch.ui.TitleLabel;
 import altlombardisch.ui.page.BasePage;

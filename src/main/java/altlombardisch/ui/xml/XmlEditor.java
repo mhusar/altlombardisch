@@ -1,12 +1,8 @@
 package altlombardisch.ui.xml;
 
-import java.math.BigInteger;
-import java.security.SecureRandom;
-import java.util.List;
-
-import javax.json.JsonObject;
-
+import altlombardisch.xml.TagDataProvider;
 import altlombardisch.xml.XmlHelper;
+import altlombardisch.xml.document.XmlDocumentDefinition;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AbstractAjaxBehavior;
@@ -24,8 +20,10 @@ import org.apache.wicket.request.resource.PackageResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.validation.validator.StringValidator;
 
-import altlombardisch.xml.TagDataProvider;
-import altlombardisch.xml.document.XmlDocumentDefinition;
+import javax.json.JsonObject;
+import java.math.BigInteger;
+import java.security.SecureRandom;
+import java.util.List;
 
 /**
  * A form component panel with a hidden textarea and a mirror container used to

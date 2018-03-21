@@ -4,6 +4,7 @@ import altlombardisch.auth.WebSession;
 import altlombardisch.ui.AjaxView;
 import altlombardisch.ui.TitleLabel;
 import altlombardisch.ui.page.BasePage;
+import altlombardisch.xml.document.XmlDocumentDefinition;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -13,8 +14,6 @@ import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-
-import altlombardisch.xml.document.XmlDocumentDefinition;
 
 /**
  * A page containing an edit form for XML tag definitions.

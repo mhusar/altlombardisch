@@ -1,25 +1,20 @@
 package altlombardisch.siglum;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import altlombardisch.ui.NumberTextField;
+import altlombardisch.ui.xml.XmlEditor;
 import altlombardisch.ui.xml.XmlTextField;
+import altlombardisch.xml.document.XmlDocumentDefinition;
 import altlombardisch.xml.document.XmlDocumentDefinitionDao;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
-import org.apache.wicket.markup.html.form.CheckBox;
-import org.apache.wicket.markup.html.form.EnumChoiceRenderer;
-import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.ListChoice;
-import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.form.*;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.model.StringResourceModel;
 
-import altlombardisch.ui.xml.XmlEditor;
-import altlombardisch.xml.document.XmlDocumentDefinition;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * A form for viewing siglums.

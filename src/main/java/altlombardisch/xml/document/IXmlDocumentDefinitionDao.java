@@ -1,8 +1,8 @@
 package altlombardisch.xml.document;
 
-import java.util.List;
-
 import altlombardisch.data.IDao;
+
+import java.util.List;
 
 /**
  * Defines a document definition DAO by extending interface IDao.

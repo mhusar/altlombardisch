@@ -7,6 +7,7 @@ import org.hibernate.UnresolvableObjectException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.OptimisticLockException;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -61,7 +62,7 @@ public class CharacterDao extends GenericDao<Character> implements ICharacterDao
                 transaction.rollback();
             }
 
-            if (e instanceof StaleObjectStateException) {
+            if (e instanceof OptimisticLockException || e instanceof StaleObjectStateException) {
                 panicOnSaveLockingError(character, e);
             } else if (e instanceof UnresolvableObjectException) {
                 panicOnSaveUnresolvableObjectError(character, e);
@@ -101,7 +102,7 @@ public class CharacterDao extends GenericDao<Character> implements ICharacterDao
                 transaction.rollback();
             }
 
-            if (e instanceof StaleObjectStateException) {
+            if (e instanceof OptimisticLockException || e instanceof StaleObjectStateException) {
                 panicOnSaveLockingError(character, e);
             } else if (e instanceof UnresolvableObjectException) {
                 panicOnSaveUnresolvableObjectError(character, e);

@@ -1,16 +1,6 @@
 package altlombardisch.ui.xml;
 
-import java.io.IOException;
-import java.io.StringReader;
-import java.net.URL;
-
-import javax.xml.XMLConstants;
-import javax.xml.transform.Source;
-import javax.xml.transform.stream.StreamSource;
-import javax.xml.validation.Schema;
-import javax.xml.validation.SchemaFactory;
-import javax.xml.validation.Validator;
-
+import altlombardisch.xml.document.XmlDocumentDefinition;
 import org.apache.wicket.Component;
 import org.apache.wicket.request.Url;
 import org.apache.wicket.request.UrlRenderer;
@@ -21,7 +11,15 @@ import org.apache.wicket.validation.IValidatable;
 import org.apache.wicket.validation.IValidator;
 import org.xml.sax.SAXException;
 
-import altlombardisch.xml.document.XmlDocumentDefinition;
+import javax.xml.XMLConstants;
+import javax.xml.transform.Source;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
+import java.io.IOException;
+import java.io.StringReader;
+import java.net.URL;
 
 /**
  * Validates a from component’s value against a XML schema.

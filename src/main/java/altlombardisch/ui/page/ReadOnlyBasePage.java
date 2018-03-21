@@ -1,14 +1,13 @@
 package altlombardisch.ui.page;
 
-import javax.json.JsonArray;
-
+import altlombardisch.character.CharacterHelper;
 import altlombardisch.ui.panel.HeaderPanel;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.markup.html.TransparentWebMarkupContainer;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 
-import altlombardisch.character.CharacterHelper;
+import javax.json.JsonArray;
 
 /**
  * A base page with a header panel.

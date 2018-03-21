@@ -1,9 +1,9 @@
 package altlombardisch.xml.attribute;
 
-import java.util.List;
-
 import altlombardisch.data.IDao;
 import altlombardisch.xml.tag.XmlTagDefinition;
+
+import java.util.List;
 
 /**
  * Defines an attribute definition DAO by extending interface IDao.

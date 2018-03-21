@@ -1,6 +1,9 @@
 package altlombardisch.xml.document;
 
 import altlombardisch.ui.AjaxView;
+import altlombardisch.ui.panel.FeedbackPanel;
+import altlombardisch.ui.xml.XmlEditor;
+import altlombardisch.xml.tag.XmlTagDefinitionEditPage;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
@@ -9,15 +12,7 @@ import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Panel;
-import org.apache.wicket.model.CompoundPropertyModel;
-import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
-import org.apache.wicket.model.PropertyModel;
-import org.apache.wicket.model.StringResourceModel;
-
-import altlombardisch.ui.panel.FeedbackPanel;
-import altlombardisch.ui.xml.XmlEditor;
-import altlombardisch.xml.tag.XmlTagDefinitionEditPage;
+import org.apache.wicket.model.*;
 
 /**
  * An edit form for XML document definitions.

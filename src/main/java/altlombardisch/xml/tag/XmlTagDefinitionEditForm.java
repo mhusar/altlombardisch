@@ -1,9 +1,8 @@
 package altlombardisch.xml.tag;
 
-import java.util.Iterator;
-
 import altlombardisch.ui.AjaxView;
 import altlombardisch.ui.panel.FeedbackPanel;
+import altlombardisch.xml.attribute.XmlAttributeDefinitionEditPage;
 import altlombardisch.xml.document.XmlDocumentDefinition;
 import altlombardisch.xml.document.XmlDocumentDefinitionDao;
 import altlombardisch.xml.document.XmlDocumentDefinitionEditPage;
@@ -28,7 +27,7 @@ import org.apache.wicket.validation.IValidatable;
 import org.apache.wicket.validation.IValidator;
 import org.apache.wicket.validation.ValidationError;
 
-import altlombardisch.xml.attribute.XmlAttributeDefinitionEditPage;
+import java.util.Iterator;
 
 /**
  * An edit form for XML tag definitions.

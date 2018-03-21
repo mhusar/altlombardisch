@@ -44,11 +44,11 @@ public class SiglumViewForm extends Form<Siglum> {
         XmlEditor textXmlEditor = new XmlEditor("text",
                 new PropertyModel<String>(model, "text"), new Model<String>(
                         new StringResourceModel("Siglum.text").getString()));
-        ListChoice<SiglumTypes.Type> typeListChoice = new ListChoice<SiglumTypes.Type>(
-                "type", new PropertyModel<SiglumTypes.Type>(getModelObject(),
-                        "type"), new ArrayList<SiglumTypes.Type>(
-                        Arrays.asList(SiglumTypes.Type.values())),
-                new EnumChoiceRenderer<SiglumTypes.Type>(), 1);
+        ListChoice<SiglumType.Type> typeListChoice = new ListChoice<SiglumType.Type>(
+                "type", new PropertyModel<SiglumType.Type>(getModelObject(),
+                        "type"), new ArrayList<SiglumType.Type>(
+                        Arrays.asList(SiglumType.Type.values())),
+                new EnumChoiceRenderer<SiglumType.Type>(), 1);
         CheckBox gasconCheckbox = new CheckBox("gascon");
         CheckBox occitanCheckbox = new CheckBox("occitan");
 

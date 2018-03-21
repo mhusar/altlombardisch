@@ -100,6 +100,7 @@ public class SiglumIndexPage extends IndexBasePage {
 
         columns.add(new TextFilterColumn<Siglum, Siglum, String>(Model.of(getString("Siglum.name")),
                 "name", "name"));
+        columns.add(new SiglumTypeTextFilterColumn(Model.of(getString("Siglum.type")), "type", "type"));
         columns.add(new SiglumActionPanelColumn(Model.of("")));
 
         return columns;
@@ -156,6 +157,7 @@ public class SiglumIndexPage extends IndexBasePage {
          */
         @Override
         protected void onUpdate(AjaxRequestTarget target) {
+            dataProvider.updateFilter(textField.getInput());
             target.add(dataTable);
         }
     }

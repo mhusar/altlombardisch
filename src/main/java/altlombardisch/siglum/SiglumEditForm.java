@@ -97,11 +97,11 @@ public class SiglumEditForm extends Form<Siglum> {
         XmlEditor textXmlEditor = new XmlEditor("text",
                 new PropertyModel<String>(getModel(), "text"), new Model<String>(
                         new StringResourceModel("Siglum.text").getString()));
-        ListChoice<SiglumTypes.Type> typeListChoice = new ListChoice<SiglumTypes.Type>(
-                "type", new PropertyModel<SiglumTypes.Type>(getModelObject(),
-                        "type"), new ArrayList<SiglumTypes.Type>(
-                        Arrays.asList(SiglumTypes.Type.values())),
-                new EnumChoiceRenderer<SiglumTypes.Type>(), 1);
+        ListChoice<SiglumType.Type> typeListChoice = new ListChoice<SiglumType.Type>(
+                "type", new PropertyModel<SiglumType.Type>(getModelObject(),
+                        "type"), new ArrayList<SiglumType.Type>(
+                        Arrays.asList(SiglumType.Type.values())),
+                new EnumChoiceRenderer<SiglumType.Type>(), 1);
         Button saveButton = new SaveButton("saveButton");
         Button continueButton = new ContinueButton("continueButton");
         Button doneButton = new DoneButton("doneButton");
@@ -434,7 +434,7 @@ public class SiglumEditForm extends Form<Siglum> {
      * Checks if a user has a role.
      */
     private class RequiredTypeValidator implements
-            INullAcceptingValidator<SiglumTypes.Type> {
+            INullAcceptingValidator<SiglumType.Type> {
         /**
          * Determines if a deserialized file is compatible with this class.
          */
@@ -447,10 +447,10 @@ public class SiglumEditForm extends Form<Siglum> {
          *            IValidatable instance that is validated
          */
         @Override
-        public void validate(IValidatable<SiglumTypes.Type> validatable) {
+        public void validate(IValidatable<SiglumType.Type> validatable) {
             ValidationError error = new ValidationError();
 
-            if (!(validatable.getValue() instanceof SiglumTypes.Type)) {
+            if (!(validatable.getValue() instanceof SiglumType.Type)) {
                 error.addKey("SiglumEditForm.type-is-required");
             }
 

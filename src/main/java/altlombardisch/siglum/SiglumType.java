@@ -3,7 +3,7 @@ package altlombardisch.siglum;
 /**
  * Class defining allowed types of siglums.
  */
-public abstract class SiglumTypes {
+public abstract class SiglumType {
     /**
      * A type for primary sources.
      */

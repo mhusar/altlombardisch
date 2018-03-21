@@ -68,7 +68,7 @@ public class Siglum implements Serializable {
      */
     @Enumerated(EnumType.STRING)
     @Column(name = "type", nullable = false)
-    private SiglumTypes.Type type;
+    private SiglumType.Type type;
 
     /**
      * Creates an instance of a siglum.
@@ -198,7 +198,7 @@ public class Siglum implements Serializable {
      * 
      * @return Type of a siglum.
      */
-    public SiglumTypes.Type getType() {
+    public SiglumType.Type getType() {
         return type;
     }
 
@@ -207,7 +207,7 @@ public class Siglum implements Serializable {
      * 
      * @param type type of a siglum
      */
-    public void setType(SiglumTypes.Type type) {
+    public void setType(SiglumType.Type type) {
         this.type = type;
     }
 

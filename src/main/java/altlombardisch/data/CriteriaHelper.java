@@ -1,5 +1,9 @@
 package altlombardisch.data;
 
+import altlombardisch.siglum.Siglum;
+import altlombardisch.siglum.SiglumType;
+import org.apache.wicket.model.ResourceModel;
+
 import javax.persistence.criteria.*;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -11,9 +15,52 @@ import java.util.Map;
  */
 final class CriteriaHelper {
     /**
+     * Matches a filter string against a pos source type.
+     *
+     * @param filter string filter
+     * @return A pos source type, or null.
+     */
+    private static SiglumType.Type matchSiglumType(String filter) {
+        String primaryTypeString = new ResourceModel("Type.PRIMARY").getObject();
+        String secondaryTypeString = new ResourceModel("Type.SECONDARY").getObject();
+        String tertiaryTypeString = new ResourceModel("Type.TERTIARY").getObject();
+
+        if (primaryTypeString.toUpperCase().startsWith(filter.toUpperCase())) {
+            return SiglumType.Type.PRIMARY;
+        } else if (secondaryTypeString.toUpperCase().startsWith(filter.toUpperCase())) {
+            return SiglumType.Type.SECONDARY;
+        } else if (tertiaryTypeString.toUpperCase().startsWith(filter.toUpperCase())) {
+            return SiglumType.Type.TERTIARY;
+        }
+
+        return null;
+    }
+
+    /**
+     * Returns automatically created pos restrictions for a string filter.
+     *
+     * @param criteriaBuilder constructor for criteria queries
+     * @param root            query root referencing entities
+     * @param filter          string filter
+     * @return An expression of type boolean, or null.
+     */
+    private static Expression<Boolean> getSiglumFilterStringRestriction(CriteriaBuilder criteriaBuilder, Root<?> root,
+                                                                     String filter) {
+        SiglumType.Type type = CriteriaHelper.matchSiglumType(filter);
+
+        if (type != null) {
+            return criteriaBuilder.or(
+                    criteriaBuilder.like(root.get("name"), filter + "%"),
+                    criteriaBuilder.equal(root.get("type"), type));
+        } else {
+            return criteriaBuilder.like(root.get("name"), filter + "%");
+        }
+    }
+
+    /**
      * Returns automatically created restrictions for a string filter.
      *
-     * @param criteriaBuilder contructor for criteria queries
+     * @param criteriaBuilder constructor for criteria queries
      * @param root            query root referencing entities
      * @param joins           map of joins
      * @param filter          string filter
@@ -23,13 +70,17 @@ final class CriteriaHelper {
     public static Expression<Boolean> getFilterStringRestriction(CriteriaBuilder criteriaBuilder, Root<?> root,
                                                                  Map<String, Join<?, ?>> joins, String filter,
                                                                  String property, Class<?> typeClass) {
+        if (typeClass.equals(Siglum.class)) {
+            return getSiglumFilterStringRestriction(criteriaBuilder, root, filter);
+        }
+
         return null;
     }
 
     /**
      * Returns an automatically created list of order objects for a property string.
      *
-     * @param criteriaBuilder contructor for criteria queries
+     * @param criteriaBuilder constructor for criteria queries
      * @param root            query root referencing entities
      * @param joins           map of joins
      * @param property        sort property

@@ -8,8 +8,6 @@
   <entry key="Action.batchProcessing">Stapelverarbeitung</entry>
   <entry key="Action.cancel">Abbrechen</entry>
   <entry key="Action.continue">Weiter</entry>
-  <entry key="Action.correct">Korrigieren</entry>
-  <entry key="Action.correction">Korrektur</entry>
   <entry key="Action.delete">Löschen</entry>
   <entry key="Action.done">Fertig</entry>
   <entry key="Action.edit">Bearbeiten</entry>
@@ -86,7 +84,6 @@
   <entry key="SiglumDeleteDeniedPanel.title">Löschen nicht möglich</entry>
   <entry key="SiglumEditForm.siglum-is-non-unique">Ein Sigel mit diesem Namen existiert bereits.</entry>
   <entry key="SiglumEditForm.type-is-required">Bitte wählen Sie einen Literaturtyp für das Sigel aus.</entry>
-  <entry key="SiglumEditPage.correctHeader">Sigel korrigieren</entry>
   <entry key="SiglumEditPage.editHeader">Sigel bearbeiten</entry>
   <entry key="SiglumEditPage.newHeader">Sigel erstellen</entry>
   <entry key="SiglumIndexPage.header">Sigel</entry>

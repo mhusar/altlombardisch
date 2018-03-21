@@ -76,7 +76,6 @@ public class SiglumIndexPage extends IndexBasePage {
         add(filterTextField);
         add(new NewButton("new"));
         add(new BatchProcessingButton("batchProcessing"));
-        add(new CorrectionButton("correction"));
         add(container);
         container.add(fragment);
     }
@@ -215,43 +214,6 @@ public class SiglumIndexPage extends IndexBasePage {
         @Override
         public void onClick() {
             setResponsePage(new SiglumEditPage());
-        }
-    }
-
-    /**
-     * A button which runs a siglum edit form to correct siglums.
-     *
-     */
-    private class CorrectionButton extends Link<Void> {
-        /**
-         * Determines if a deserialized file is compatible with this class.
-         */
-        private static final long serialVersionUID = 1L;
-
-        /**
-         * Creates a new correction button.
-         * 
-         * @param id
-         *            ID of the button
-         */
-        public CorrectionButton(String id) {
-            super(id);
-
-            if (new SiglumDao().findAll("").isEmpty()) {
-                setEnabled(false);
-            }
-        }
-
-        /**
-         * Called on button click.
-         */
-        @Override
-        public void onClick() {
-            SiglumDao siglumDao = new SiglumDao();
-            Siglum firstSiglum = siglumDao.getFirstSiglum();
-            Integer nextSiglumId = siglumDao.getNextSiglumId(firstSiglum);
-
-            setResponsePage(new SiglumEditPage(new Model<Siglum>(firstSiglum), nextSiglumId));
         }
     }
 }

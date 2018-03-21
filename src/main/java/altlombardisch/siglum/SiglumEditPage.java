@@ -10,7 +10,6 @@ import org.apache.wicket.authroles.authorization.strategies.role.annotations.Aut
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
 
 /**
  * A page containing a siglum edit form.
@@ -31,11 +30,6 @@ public class SiglumEditPage extends BasePage {
      * Class of the next page.
      */
     private Class<? extends Page> nextPageClass;
-
-    /**
-     * Id of the next siglum.
-     */
-    private Integer nextSiglumId;
 
     /**
      * Creates a new siglum edit page.
@@ -79,24 +73,6 @@ public class SiglumEditPage extends BasePage {
     }
 
     /**
-     * Creates a new siglum edit page.
-     * 
-     * @param siglumModel
-     *            model of the edited siglum object
-     * @param nextSiglumId
-     *            Id of the next siglum
-     */
-    public SiglumEditPage(IModel<Siglum> siglumModel, Integer nextSiglumId) {
-        this.nextPageClass = SiglumIndexPage.class;
-        this.nextSiglumId = nextSiglumId;
-
-        if (siglumModel instanceof IModel) {
-            new SiglumDao().refresh(siglumModel.getObject());
-            this.siglumModel = new CompoundPropertyModel<Siglum>(siglumModel);
-        }
-    }
-
-    /**
      * Called when a siglum edit page is initialized.
      */
     @Override
@@ -108,19 +84,7 @@ public class SiglumEditPage extends BasePage {
         ModalMessagePanel siglumDeleteConfirmPanel;
 
         if (nextPageClass instanceof Class) {
-            if (nextSiglumId instanceof Integer) {
-                if (nextSiglumId.equals(new Integer(-1))) {
-                    siglumDeleteConfirmPanel = new SiglumDeleteConfirmPanel("siglumDeleteConfirmPanel", nextPageClass);
-                } else {
-                    Siglum nextSiglum = new SiglumDao().findById(nextSiglumId);
-                    Integer afterNextSiglumId = new SiglumDao().getNextSiglumId(nextSiglum);
-                    Page nextSiglumPage = new SiglumEditPage(new Model<Siglum>(nextSiglum), afterNextSiglumId);
-
-                    siglumDeleteConfirmPanel = new SiglumDeleteConfirmPanel("siglumDeleteConfirmPanel", nextSiglumPage);
-                }
-            } else {
-                siglumDeleteConfirmPanel = new SiglumDeleteConfirmPanel("siglumDeleteConfirmPanel", nextPageClass);
-            }
+            siglumDeleteConfirmPanel = new SiglumDeleteConfirmPanel("siglumDeleteConfirmPanel", nextPageClass);
         } else {
             siglumDeleteConfirmPanel = new SiglumDeleteConfirmPanel("siglumDeleteConfirmPanel", SiglumIndexPage.class);
         }
@@ -131,20 +95,12 @@ public class SiglumEditPage extends BasePage {
             siglumDeleteConfirmPanel.setVisible(false);
             add(new TitleLabel(getString("SiglumEditPage.newHeader")));
             add(new Label("header", getString("SiglumEditPage.newHeader")));
-        } else if (nextSiglumId instanceof Integer) {
-            add(new TitleLabel(getString("SiglumEditPage.correctHeader")));
-            add(new Label("header", getString("SiglumEditPage.correctHeader")));
         } else {
             add(new TitleLabel(getString("SiglumEditPage.editHeader")));
             add(new Label("header", getString("SiglumEditPage.editHeader")));
         }
 
         add(new IndicatorOverlayPanel());
-
-        if (nextSiglumId instanceof Integer) {
-            add(new SiglumEditForm("siglumEditForm", siglumModel, nextSiglumId, nextPageClass));
-        } else {
-            add(new SiglumEditForm("siglumEditForm", siglumModel, nextPageClass));
-        }
+        add(new SiglumEditForm("siglumEditForm", siglumModel, nextPageClass));
     }
 }

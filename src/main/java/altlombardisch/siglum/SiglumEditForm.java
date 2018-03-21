@@ -41,11 +41,6 @@ public class SiglumEditForm extends Form<Siglum> {
     private Class<? extends Page> nextPageClass;
 
     /**
-     * ID of the next siglum.
-     */
-    private Integer nextSiglumId;
-
-    /**
      * Creates a new siglum edit form.
      * 
      * @param id
@@ -59,26 +54,6 @@ public class SiglumEditForm extends Form<Siglum> {
             Class<? extends Page> nextPageClass) {
         super(id, model);
 
-        this.nextPageClass = nextPageClass;
-        initialize();
-    }
-
-    /**
-     * Creates a new siglum edit form.
-     * 
-     * @param id
-     *            ID of the edit form
-     * @param model
-     *            siglum model that is edited
-     * @param nextSiglumId
-     *            ID of the next siglum
-     * @param nextPageClass
-     *            the next page
-     */
-    public SiglumEditForm(String id, IModel<Siglum> model, Integer nextSiglumId, Class<? extends Page> nextPageClass) {
-        super(id, model);
-
-        this.nextSiglumId = nextSiglumId;
         this.nextPageClass = nextPageClass;
         initialize();
     }
@@ -126,19 +101,6 @@ public class SiglumEditForm extends Form<Siglum> {
         textXmlEditor.setMaximumLength(5000);
         textXmlEditor.setRows(5);
         typeListChoice.add(new RequiredTypeValidator());
-
-        if (nextSiglumId instanceof Integer) {
-            if (nextSiglumId.equals(new Integer(-1))) {
-                saveButton.setVisible(false);
-                continueButton.setVisible(false);
-            } else {
-                saveButton.setVisible(false);
-                doneButton.setVisible(false);
-            }
-        } else {
-            continueButton.setVisible(false);
-            doneButton.setVisible(false);
-        }
     }
 
     /**
@@ -177,18 +139,7 @@ public class SiglumEditForm extends Form<Siglum> {
         }
 
         if (nextPageClass instanceof Class) {
-            if (nextSiglumId instanceof Integer) {
-                if (nextSiglumId.equals(new Integer(-1))) {
-                    setResponsePage(nextPageClass);
-                } else {
-                    Siglum nextSiglum = new SiglumDao().findById(nextSiglumId);
-                    Integer afterNextSiglumId = new SiglumDao().getNextSiglumId(nextSiglum);
-
-                    setResponsePage(new SiglumEditPage(new Model<Siglum>(nextSiglum), afterNextSiglumId));
-                }
-            } else {
-                setResponsePage(nextPageClass);
-            }
+            setResponsePage(nextPageClass);
         } else {
             setResponsePage(SiglumEditPage.class);
         }

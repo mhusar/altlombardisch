@@ -95,15 +95,6 @@ public class SiglumActionPanelColumn extends FilterPanelColumn<Siglum> {
                             setResponsePage(new SiglumEditPage(model, getPage().getPageClass()));
                         }
                     });
-                    add(new AjaxLink<Void>("correctLink") {
-                        private static final long serialVersionUID = 1L;
-
-                        @Override
-                        public void onClick(AjaxRequestTarget target) {
-                            Integer nextSiglumId = new SiglumDao().getNextSiglumId(model.getObject());
-                            setResponsePage(new SiglumEditPage(model, nextSiglumId));
-                        }
-                    });
                     add(new AjaxLink<Void>("deleteLink") {
                         /**
                          * Determines if a deserialized file is compatible with

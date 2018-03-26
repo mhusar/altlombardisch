@@ -32,19 +32,4 @@ public interface ISiglumDao extends IDao<Siglum> {
      * @return A list of siglums.
      */
     List<Siglum> findAll(String substring);
-    
-    /**
-     * Returns the first siglum of a package.
-     * 
-     * @return A siglum or null.
-     */
-    Siglum getFirstSiglum();
-
-    /**
-     * Returns the ID of the next siglum.
-     * 
-     * @param siglum the latest a siglum
-     * @return A positive integer or -1.
-     */
-    Integer getNextSiglumId(Siglum siglum);
 }

@@ -1,5 +1,6 @@
 package altlombardisch.ui.xml;
 
+import altlombardisch.CmsApplication;
 import altlombardisch.xml.TagDataProvider;
 import altlombardisch.xml.XmlHelper;
 import altlombardisch.xml.document.XmlDocumentDefinition;
@@ -298,7 +299,7 @@ public class XmlEditor extends FormComponentPanel<String> implements
                 @Override
                 public List<HeaderItem> getDependencies() {
                     List<HeaderItem> dependencies = super.getDependencies();
-                    WebApplication application = altlombardisch.WebApplication.get();
+                    WebApplication application = CmsApplication.get();
                     ResourceReference jqueryScript = application
                             .getJavaScriptLibrarySettings()
                             .getJQueryReference();

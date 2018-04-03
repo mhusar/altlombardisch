@@ -29,7 +29,7 @@ import org.apache.wicket.settings.ExceptionSettings;
 /**
  * A web application that does role-based authentication.
  */
-public class WebApplication extends AuthenticatedWebApplication {
+public class CmsApplication extends AuthenticatedWebApplication {
     /**
      * Provides a custom initialization for this app.
      */

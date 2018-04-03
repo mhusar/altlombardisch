@@ -10,20 +10,19 @@
 
     <properties>
         <bootstrap.version>3.3.7-1</bootstrap.version>
-        <hibernate.validator.version>5.3.3.Final</hibernate.validator.version>
-        <hibernate.version>5.2.8.Final</hibernate.version>
+        <hibernate.version>5.2.15.Final</hibernate.version>
         <java.version>1.8</java.version>
-        <javaee.version>7.0</javaee.version>
+        <javaee.version>8.0</javaee.version>
         <javax.json.version>1.0.4</javax.json.version>
         <jquery.ui.version>1.12.1</jquery.ui.version>
         <log4j.version>1.2.17</log4j.version>
         <mysql.version>6.0.5</mysql.version>
         <jetty.version>9.4.0.v20161208</jetty.version>
         <junit.version>4.12</junit.version>
-        <maven.plugins.version>3.6.0</maven.plugins.version>
-        <maven.war.plugin.version>3.0.0</maven.war.plugin.version>
-        <slf4j.version>1.7.21</slf4j.version>
-        <wicket.version>7.9.0</wicket.version>
+        <maven.compiler.plugin.version>3.7.0</maven.compiler.plugin.version>
+        <maven.war.plugin.version>3.2.0</maven.war.plugin.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <wicket.version>7.10.0</wicket.version>
     </properties>
 
     <repositories>
@@ -43,7 +42,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.plugins.version}</version>
+                <version>${maven.compiler.plugin.version}</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -89,6 +88,13 @@
                 <db.username>altlombardisch</db.username>
                 <db.password></db.password>
                 <db.url>jdbc:mysql://localhost/altlombardisch</db.url>
+                <!--
+                  enforce connection timezone UTC to prevent problems:
+                  "InvalidConnectionAttributeException: The server time zone value 'CEST' is unrecognized or represents "
+                  "more than one time zone. …",
+                  see: https://stackoverflow.com/questions/36890422/jdbc-connection-error-unrecognized-timezone
+                -->
+                <db.url.options>?useTimezone=true&amp;amp;serverTimezone=UTC</db.url.options>
                 <db.hbm2ddl.auto>validate</db.hbm2ddl.auto>
                 <db.dialect>org.hibernate.dialect.MySQL5Dialect</db.dialect>
                 <db.driver>com.mysql.cj.jdbc.Driver</db.driver>
@@ -106,6 +112,7 @@
                 <db.username>altlombardisch</db.username>
                 <db.password></db.password>
                 <db.url>jdbc:mysql://localhost/altlombardisch</db.url>
+                <db.url.options>?useTimezone=true&amp;amp;serverTimezone=UTC</db.url.options>
                 <db.hbm2ddl.auto>update</db.hbm2ddl.auto>
                 <db.dialect>org.hibernate.dialect.MySQL5Dialect</db.dialect>
                 <db.driver>com.mysql.cj.jdbc.Driver</db.driver>
@@ -123,6 +130,7 @@
                 <db.username>altlombardisch</db.username>
                 <db.password></db.password>
                 <db.url>jdbc:mysql://localhost/altlombardisch</db.url>
+                <db.url.options>?useTimezone=true&amp;amp;serverTimezone=UTC</db.url.options>
                 <db.hbm2ddl.auto>update</db.hbm2ddl.auto>
                 <db.dialect>org.hibernate.dialect.MySQL5Dialect</db.dialect>
                 <db.driver>com.mysql.cj.jdbc.Driver</db.driver>

@@ -1,6 +1,6 @@
 package altlombardisch.ui.input;
 
-import altlombardisch.WebApplication;
+import altlombardisch.CmsApplication;
 import org.apache.wicket.markup.head.HeaderItem;
 import org.apache.wicket.markup.head.IHeaderResponse;
 import org.apache.wicket.markup.head.JavaScriptHeaderItem;
@@ -39,7 +39,7 @@ public class InputPanel extends Panel {
             @Override
             public List<HeaderItem> getDependencies() {
                 List<HeaderItem> dependencies = super.getDependencies();
-                org.apache.wicket.protocol.http.WebApplication application = WebApplication.get();
+                org.apache.wicket.protocol.http.WebApplication application = CmsApplication.get();
                 ResourceReference jqueryScript = application.getJavaScriptLibrarySettings().getJQueryReference();
 
                 dependencies.add(JavaScriptHeaderItem.forReference(jqueryScript));

@@ -4,6 +4,35 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
     <display-name>altlombardisch</display-name>
+    <filter>
+        <filter-name>frontent-filter</filter-name>
+        <filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
+        <init-param>
+            <param-name>applicationClassName</param-name>
+            <param-value>altlombardisch.FrontendApplication</param-value>
+        </init-param>
+        <init-param>
+            <param-name>wicket.configuration</param-name>
+            <param-value>${wicket.configuration}</param-value>
+        </init-param>
+        <init-param>
+            <param-name>wicket.contentType</param-name>
+            <param-value>${wicket.contentType}</param-value>
+        </init-param>
+        <init-param>
+            <param-name>wicket.stripWicketTags</param-name>
+            <param-value>${wicket.stripWicketTags}</param-value>
+        </init-param>
+        <init-param>
+            <param-name>ignorePaths</param-name>
+            <param-value>api/</param-value>
+            <param-value>cms/</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>frontent-filter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     <!-- /api/ -->
     <filter>
         <filter-name>api-filter</filter-name>

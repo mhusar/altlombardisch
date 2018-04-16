@@ -1,70 +1,60 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+      xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
 <head>
-<meta charset="utf-8" />
+    <meta charset="utf-8"/>
 </head>
 <body>
-  <wicket:extend>
+<wicket:extend>
     <div class="container">
-      <div class="page-header">
-        <h1>
-          <wicket:label wicket:id="header"></wicket:label>
-        </h1>
-      </div>
+        <div class="page-header">
+            <h1>
+                <wicket:label wicket:id="header"></wicket:label>
+            </h1>
+        </div>
     </div>
     <div class="container">
-      <form wicket:id="siglumViewForm" class="form-horizontal"
-        role="form">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="form-group">
-              <label for="taggedName" class="col-sm-2 col-form-label"><wicket:message
-                  key="Siglum.name"></wicket:message></label>
-              <div class="col-sm-10">
-                <input type="text" wicket:id="taggedName"
-                  id="taggedName" class="form-control"
-                  required="required" maxlength="100"
-                  autofocus="autofocus" readonly="readonly" />
-              </div>
+        <form wicket:id="siglumViewForm" class="form-horizontal"
+              role="form">
+            <div class="form-group row">
+                <label for="taggedName" class="col-sm-2 col-form-label">
+                    <wicket:message key="Siglum.name"></wicket:message>
+                </label>
+                <div class="col-sm-10">
+                    <input type="text" wicket:id="taggedName"
+                           id="taggedName" class="form-control"
+                           required="required" maxlength="100"
+                           autofocus="autofocus" readonly="readonly"/>
+                </div>
             </div>
-          </div>
-          <div class="col-md-12">
-            <div class="form-group">
-              <label class="col-sm-2 col-form-label"><wicket:message
-                  key="Siglum.text"></wicket:message></label>
-              <div class="col-sm-10">
-                <div wicket:id="text"></div>
-              </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">
+                    <wicket:message
+                            key="Siglum.text"></wicket:message>
+                </label>
+                <div class="col-sm-10">
+                    <div wicket:id="text"></div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="form-group">
-              <label for="type" class="col-sm-2 col-form-label"><wicket:message
-                  key="Siglum.type"></wicket:message></label>
-              <div class="col-sm-10">
-                <select wicket:id="type" id="type" class="form-control"
-                  disabled="disabled"></select>
-              </div>
+            <div class="form-group row">
+                <label for="type" class="col-sm-2 col-form-label">
+                    <wicket:message key="Siglum.type"></wicket:message>
+                </label>
+                <div class="col-sm-10">
+                    <select wicket:id="type" id="type" class="form-control"
+                            disabled="disabled"></select>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="form-group">
-              <div class="offset-sm-2 col-sm-10">
-                <button type="button" wicket:id="toIndexButton"
-                  class="btn btn-default">
-                  <wicket:message key="Action.toIndex"></wicket:message>
-                </button>
-              </div>
+            <div class="form-group row">
+                <div class="offset-sm-2 col-sm-10">
+                    <button type="button" wicket:id="toIndexButton"
+                            class="btn btn-default">
+                        <wicket:message key="Action.toIndex"></wicket:message>
+                    </button>
+                </div>
             </div>
-          </div>
-        </div>
-      </form>
+        </form>
     </div>
-  </wicket:extend>
+</wicket:extend>
 </body>
 </html>

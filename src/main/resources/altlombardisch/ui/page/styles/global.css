@@ -217,14 +217,11 @@ a {
   margin-bottom: 0;
 }
 
-.well-sm.scroll {
-  height: 450px;
+.card.scroll {
+  margin-bottom: 1rem;
+  max-height: 450px;
   overflow-y: auto;
-  padding-bottom: 0;
-}
-
-.well-sm.scroll .list-group {
-  margin-bottom: 9px;
+  padding: 0.75rem;
 }
 
 .form-group.last {

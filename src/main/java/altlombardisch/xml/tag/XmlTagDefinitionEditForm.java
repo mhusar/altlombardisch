@@ -11,7 +11,6 @@ import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.ajax.markup.html.form.AjaxButton;
-import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.RequiredTextField;
@@ -72,15 +71,11 @@ public class XmlTagDefinitionEditForm extends Form<XmlTagDefinition> {
                 new PropertyModel<String>(model, "name"));
         CheckBox selfClosingCheckBox = new CheckBox("selfClosing",
                 new PropertyModel<Boolean>(model, "selfClosing"));
-        WebMarkupContainer editAttributesListItem = new WebMarkupContainer(
-                "editAttributesListItem");
         XmlAttributeDefinitionEditPageLink editAttributesLink = new XmlAttributeDefinitionEditPageLink(
                 "editAttributesLink", model);
 
-        add(new XmlDocumentDefinitionEditPageLink("editDocumentLink",
-                parentModel));
-        add(editAttributesListItem);
-        editAttributesListItem.add(editAttributesLink);
+        add(new XmlDocumentDefinitionEditPageLink("editDocumentLink", parentModel));
+        add(editAttributesLink);
         add(new FeedbackPanel().setEscapeModelStrings(false)
                 .setOutputMarkupId(true));
         add(nameTextField);
@@ -94,8 +89,7 @@ public class XmlTagDefinitionEditForm extends Form<XmlTagDefinition> {
         nameTextField.add(new UniqueNameValidator(parentModel, getModel()));
 
         if (new XmlTagDefinitionDao().isTransient(getModelObject())) {
-            editAttributesListItem.add(AttributeModifier.append("class",
-                    "disabled"));
+            editAttributesLink.add(AttributeModifier.append("class", "disabled"));
         }
     }
 

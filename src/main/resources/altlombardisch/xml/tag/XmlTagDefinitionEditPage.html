@@ -23,18 +23,17 @@
             </div>
             <div class="col-md-9">
                 <form wicket:id="definitionEditForm" class="form-horizontal">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <nav class="pagerAfterHeader">
-                                <ul class="pager">
-                                    <li><a wicket:id="editDocumentLink">
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-auto">
+                            <nav class="pager">
+                                <div class="btn-group" role="group">
+                                    <a wicket:id="editDocumentLink" class="btn btn-outline-primary" role="button">
                                         <wicket:message key="XmlTagDefinitionEditPage.editDocument"></wicket:message>
-                                    </a></li>
-                                    <li wicket:id="editAttributesListItem"><a
-                                            wicket:id="editAttributesLink">
+                                    </a>
+                                    <a wicket:id="editAttributesLink" class="btn btn-outline-primary" role="button">
                                         <wicket:message key="XmlTagDefinitionEditPage.editAttributes"></wicket:message>
-                                    </a></li>
-                                </ul>
+                                    </a>
+                                </div>
                             </nav>
                         </div>
                     </div>

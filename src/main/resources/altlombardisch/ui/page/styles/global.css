@@ -296,8 +296,8 @@ a {
   border-top: 0 !important;
 }
 
-.pagerAfterHeader {
-  margin-top: -20px;
+.pager {
+  margin-bottom: 1rem;
 }
 
 input[type="number"] {

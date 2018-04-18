@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+      xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+      class="h-100">
 <head>
     <title wicket:id="title"></title>
     <meta charset="utf-8"/>
 </head>
-<body class="signInPage bg-info">
-<div class="feedbackPanelContainer">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 offset-md-4">
-                <div wicket:id="feedbackPanel"></div>
-            </div>
+<body class="bg-info h-100">
+<div class="container h-100">
+    <div class="row h-25 align-items-end justify-content-center">
+        <div class="col-md-4">
+            <div wicket:id="feedbackPanel"></div>
         </div>
     </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-4 offset-md-4">
+    <div class="row h-50 align-items-center justify-content-center">
+        <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
                     <wicket:message key="SignInPage.header"></wicket:message>

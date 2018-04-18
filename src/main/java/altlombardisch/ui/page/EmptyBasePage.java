@@ -49,15 +49,19 @@ public class EmptyBasePage extends WebPage {
      * @param response the response object
      */
     public void renderHead(IHeaderResponse response) {
-        PackageResourceReference globalStyle = new CssResourceReference(EmptyBasePage.class, "styles/global.css");
+        PackageResourceReference globalStyle = new CssResourceReference(EmptyBasePage.class,
+                "styles/global.css");
         PackageResourceReference globalScript = new JavaScriptResourceReference(EmptyBasePage.class,
                 "scripts/global.js");
+        PackageResourceReference iconicStyle = new CssResourceReference(EmptyBasePage.class,
+                "styles/open-iconic-bootstrap.css");
 
         HeaderItem jQueryUiStyleItem = CssUrlReferenceHeaderItem
                 .forUrl("/webjars/jquery-ui/1.12.1/jquery-ui.min.css");
         HeaderItem bootstrapStyleItem = CssUrlReferenceHeaderItem
                 .forUrl("/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css");
         CssHeaderItem globalStyleItem = CssHeaderItem.forReference(globalStyle);
+        CssHeaderItem iconicStyleItem = CssHeaderItem.forReference(iconicStyle);
         HeaderItem jqueryScriptItem = JavaScriptHeaderItem.forReference(getApplication()
                 .getJavaScriptLibrarySettings().getJQueryReference());
         HeaderItem jQueryUiScriptItem = JavaScriptUrlReferenceHeaderItem
@@ -75,6 +79,7 @@ public class EmptyBasePage extends WebPage {
 
         response.render(jQueryUiStyleItem);
         response.render(bootstrapStyleItem);
+        response.render(iconicStyleItem);
         response.render(globalStyleItem);
         response.render(jqueryScriptItem);
         response.render(jQueryUiScriptItem);

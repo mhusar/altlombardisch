@@ -1,43 +1,42 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+      xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
 <head>
-<meta charset="utf-8" />
+    <meta charset="utf-8"/>
 </head>
 <body>
-  <wicket:panel>
+<wicket:panel>
     <div class="container">
-      <ul class="tags"></ul>
-      <ul class="characters"></ul>
+        <ul class="tags"></ul>
+        <ul class="characters"></ul>
     </div>
     <template class="tab-dialog-template">
-    <div class="modal fade tab-dialog" role="dialog">
-      <div class="modal-dialog">
-        <form class="form-horizontal" role="form">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal"
-                aria-label="Close">
-                <span aria-hidden="true">&#215;</span>
-              </button>
-              <h4 class="modal-title"
-                wicket:message="data-title-start:InputPanel.tabDialogTitleStart, data-title-end:InputPanel.tabDialogTitleEnd"></h4>
+        <div class="modal fade tab-dialog" role="dialog">
+            <div class="modal-dialog">
+                <form class="form-horizontal" role="form">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title"
+                                wicket:message="data-title-start:InputPanel.tabDialogTitleStart, data-title-end:InputPanel.tabDialogTitleEnd">
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body"></div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                <wicket:message key="Action.cancel"></wicket:message>
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <wicket:message key="InputPanel.insertTag"></wicket:message>
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="modal-body"></div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default"
-                data-dismiss="modal">
-                <wicket:message key="Action.cancel"></wicket:message>
-              </button>
-              <button type="submit" class="btn btn-primary">
-                <wicket:message key="InputPanel.insertTag"></wicket:message>
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
+        </div>
     </template>
-  </wicket:panel>
+</wicket:panel>
 </body>
 </html>

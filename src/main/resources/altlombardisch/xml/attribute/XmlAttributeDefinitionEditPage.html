@@ -1,96 +1,84 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+      xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
 <head>
-<meta charset="utf-8" />
+    <meta charset="utf-8"/>
 </head>
 <body>
-  <wicket:extend>
+<wicket:extend>
     <div class="container">
-      <div class="page-header">
-        <h1>
-          <wicket:message key="XmlAttributeDefinitionEditPage.header"></wicket:message>
-        </h1>
-      </div>
+        <div class="page-header">
+            <h1>
+                <wicket:message key="XmlAttributeDefinitionEditPage.header"></wicket:message>
+            </h1>
+        </div>
     </div>
     <div class="container">
-      <div class="row">
-        <div class="col-md-3">
-          <div wicket:id="definitionViewPanel"></div>
-          <button wicket:id="addDefinitionButton"
-            class="btn btn-default">
-            <wicket:message key="XmlAttributeDefinitionEditPage.addDefinition"></wicket:message>
-          </button>
-        </div>
-        <div class="col-md-9">
-          <form wicket:id="definitionEditForm" class="form-horizontal">
-            <div class="row">
-              <div class="col-md-12">
-                <nav class="pagerAfterHeader">
-                  <ul class="pager">
-                    <li><a wicket:id="editTagLink"><wicket:message
-                          key="XmlAttributeDefinitionEditPage.editTag"></wicket:message>
-                    </a></li>
-                  </ul>
-                </nav>
-              </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div wicket:id="definitionViewPanel"></div>
+                <button wicket:id="addDefinitionButton"
+                        class="btn btn-default">
+                    <wicket:message key="XmlAttributeDefinitionEditPage.addDefinition"></wicket:message>
+                </button>
             </div>
-            <div class="row">
-              <div class="col-md-12">
-                <div wicket:id="feedbackPanel"></div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="form-group">
-                  <label for="name" class="col-sm-2 control-label"><wicket:message
-                      key="XmlAttributeDefinition.name"></wicket:message></label>
-                  <div class="col-sm-10">
-                    <input type="text" wicket:id="name" id="name"
-                      class="form-control" autofocus="autofocus"
-                      required="required" maxlength="100" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="form-group">
-                  <div class="col-sm-offset-2 col-sm-10">
-                    <div class="checkbox">
-                      <label> <input type="checkbox"
-                        wicket:id="required" /> <wicket:message
-                          key="XmlAttributeDefinition.required"></wicket:message>
-                      </label>
+            <div class="col-md-9">
+                <form wicket:id="definitionEditForm" class="form-horizontal">
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-auto">
+                            <nav class="pager">
+                                <div class="btn-group" role="group">
+                                    <a wicket:id="editTagLink" class="btn btn-outline-primary" role="button">
+                                        <wicket:message key="XmlAttributeDefinitionEditPage.editTag"></wicket:message>
+                                    </a>
+                                </div>
+                            </nav>
+                        </div>
                     </div>
-                  </div>
-                </div>
-              </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div wicket:id="feedbackPanel"></div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="name" class="col-sm-2 col-form-label">
+                            <wicket:message key="XmlAttributeDefinition.name"></wicket:message>
+                        </label>
+                        <div class="col-sm-10">
+                            <input type="text" wicket:id="name" id="name"
+                                   class="form-control" autofocus="autofocus"
+                                   required="required" maxlength="100"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="offset-sm-2 col-sm-10">
+                            <div class="checkbox">
+                                <label> <input type="checkbox" wicket:id="required"/>
+                                    <wicket:message key="XmlAttributeDefinition.required"></wicket:message>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="offset-sm-2 col-sm-10">
+                            <button type="button" wicket:id="cancelButton"
+                                    class="btn btn-default">
+                                <wicket:message key="Action.cancel"></wicket:message>
+                            </button>
+                            <button type="submit" wicket:id="saveButton"
+                                    class="btn btn-primary">
+                                <wicket:message key="Action.save"></wicket:message>
+                            </button>
+                            <button type="button" wicket:id="deleteButton"
+                                    class="btn btn-danger float-right">
+                                <wicket:message key="Action.delete"></wicket:message>
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="form-group">
-                  <div class="col-sm-offset-2 col-sm-10">
-                    <button type="button" wicket:id="cancelButton"
-                      class="btn btn-default">
-                      <wicket:message key="Action.cancel"></wicket:message>
-                    </button>
-                    <button type="submit" wicket:id="saveButton"
-                      class="btn btn-primary">
-                      <wicket:message key="Action.save"></wicket:message>
-                    </button>
-                    <button type="button" wicket:id="deleteButton"
-                      class="btn btn-danger pull-right">
-                      <wicket:message key="Action.delete"></wicket:message>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </form>
         </div>
-      </div>
     </div>
-  </wicket:extend>
+</wicket:extend>
 </body>
 </html>

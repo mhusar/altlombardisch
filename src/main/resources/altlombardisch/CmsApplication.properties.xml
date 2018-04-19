@@ -118,6 +118,7 @@
     bereits.</entry>
   <entry key="UserEditPage.addUser">Benutzer hinzufügen</entry>
   <entry key="UserEditPage.header">Benutzerverwaltung</entry>
+  <entry key="UserViewPanel.dummyItemText">Kein Eintrag vorhanden</entry>
   <entry key="XmlAttributeDefinitionEditForm.name-is-non-unique">Ein Attribut mit diesem Namen existiert bereits.</entry>
   <entry key="XmlAttributeDefinitionEditPage.addDefinition">Attribut hinzufügen</entry>
   <entry key="XmlAttributeDefinitionViewPanel.dummyItemText">Kein Eintrag vorhanden</entry>

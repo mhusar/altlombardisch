@@ -49,35 +49,44 @@ public class EmptyBasePage extends WebPage {
      * @param response the response object
      */
     public void renderHead(IHeaderResponse response) {
-        PackageResourceReference globalStyle = new CssResourceReference(EmptyBasePage.class, "styles/global.css");
+        PackageResourceReference globalStyle = new CssResourceReference(EmptyBasePage.class,
+                "styles/global.css");
         PackageResourceReference globalScript = new JavaScriptResourceReference(EmptyBasePage.class,
                 "scripts/global.js");
+        PackageResourceReference iconicStyle = new CssResourceReference(EmptyBasePage.class,
+                "styles/open-iconic-bootstrap.css");
 
         HeaderItem jQueryUiStyleItem = CssUrlReferenceHeaderItem
                 .forUrl("/webjars/jquery-ui/1.12.1/jquery-ui.min.css");
         HeaderItem bootstrapStyleItem = CssUrlReferenceHeaderItem
-                .forUrl("/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css");
-        HeaderItem bootstrapThemeStyleItem = CssUrlReferenceHeaderItem
-                .forUrl("/webjars/bootstrap/3.3.7-1/css/bootstrap-theme.min.css");
+                .forUrl("/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css");
         CssHeaderItem globalStyleItem = CssHeaderItem.forReference(globalStyle);
+        CssHeaderItem iconicStyleItem = CssHeaderItem.forReference(iconicStyle);
         HeaderItem jqueryScriptItem = JavaScriptHeaderItem.forReference(getApplication()
                 .getJavaScriptLibrarySettings().getJQueryReference());
         HeaderItem jQueryUiScriptItem = JavaScriptUrlReferenceHeaderItem
                 .forUrl("/webjars/jquery-ui/1.12.1/jquery-ui.min.js");
+        HeaderItem popperScriptItem = JavaScriptUrlReferenceHeaderItem
+                .forUrl("webjars/popper.js/1.12.9-1/umd/popper.min.js");
         HeaderItem bootstrapScriptItem = JavaScriptUrlReferenceHeaderItem
-                .forUrl("/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js");
+                .forUrl("/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js");
         JavaScriptHeaderItem globalScriptItem = JavaScriptHeaderItem.forReference(globalScript);
+
+        StringHeaderItem viewportItem = new StringHeaderItem("<meta name=\"viewport\" content=\"width=device-width, " +
+                "initial-scale=1, shrink-to-fit=no\">\n");
         StringHeaderItem faviconItem = new StringHeaderItem("<link rel=\"icon\" type=\"image/png\" " +
-                "href=\"/favicon.png\" sizes=\"32x32\"/>");
+                "href=\"/favicon.png\" sizes=\"32x32\"/>\n");
 
         response.render(jQueryUiStyleItem);
         response.render(bootstrapStyleItem);
-        response.render(bootstrapThemeStyleItem);
+        response.render(iconicStyleItem);
         response.render(globalStyleItem);
         response.render(jqueryScriptItem);
         response.render(jQueryUiScriptItem);
+        response.render(popperScriptItem);
         response.render(bootstrapScriptItem);
         response.render(globalScriptItem);
+        response.render(viewportItem);
         response.render(faviconItem);
     }
 }

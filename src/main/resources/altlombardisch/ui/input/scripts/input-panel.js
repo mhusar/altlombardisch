@@ -404,11 +404,10 @@ TagDialog = (function () {
             attributeObject = tagObject.attributes[i];
             formControl = jQuery("<input type='text'/>").addClass("form-control")
             .attr("data-attribute", attributeObject.name);
-            formGroup = jQuery("<div></div>").addClass("form-group");
+            formGroup = jQuery("<div></div>").addClass("form-group row");
 
-            tabDialogBody.append(jQuery("<div></div>").addClass("row")
-            .append(jQuery("<div></div>").addClass("col-md-12").append(formGroup)));
-            formGroup.append(jQuery("<label></label>").addClass("control-label col-sm-3").text(attributeObject.name));
+            tabDialogBody.append(formGroup);
+            formGroup.append(jQuery("<label></label>").addClass("col-form-label col-sm-3").text(attributeObject.name));
             formGroup.append(jQuery("<div></div>").addClass("col-sm-9").append(formControl));
 
             if (attributeObject.required) {

@@ -194,12 +194,6 @@ a {
   padding-top: 50px;
 }
 
-.signInPage .feedbackPanelContainer {
-  box-sizing: content-box;
-  height: 100px;
-  padding-top: 150px;
-}
-
 .page-header {
   margin: 30px 0px 15px;
 }
@@ -217,14 +211,16 @@ a {
   margin-bottom: 0;
 }
 
-.well-sm.scroll {
-  height: 450px;
+.card.scroll {
+  margin-bottom: 1rem;
+  max-height: 450px;
   overflow-y: auto;
-  padding-bottom: 0;
+  padding: 0.75rem;
 }
 
-.well-sm.scroll .list-group {
-  margin-bottom: 9px;
+.input-group-text {
+  padding-top: 0.5rem;
+  width: 2.75rem;
 }
 
 .form-group.last {
@@ -299,8 +295,8 @@ a {
   border-top: 0 !important;
 }
 
-.pagerAfterHeader {
-  margin-top: -20px;
+.pager {
+  margin-bottom: 1rem;
 }
 
 input[type="number"] {

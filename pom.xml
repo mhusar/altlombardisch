@@ -9,18 +9,19 @@
     <packaging>war</packaging>
 
     <properties>
-        <bootstrap.version>3.3.7-1</bootstrap.version>
+        <bootstrap.version>4.0.0-2</bootstrap.version>
         <hibernate.version>5.2.15.Final</hibernate.version>
         <java.version>1.8</java.version>
         <javaee.version>8.0</javaee.version>
         <javax.json.version>1.0.4</javax.json.version>
-        <jquery.ui.version>1.12.1</jquery.ui.version>
-        <log4j.version>1.2.17</log4j.version>
-        <mysql.version>6.0.5</mysql.version>
         <jetty.version>9.4.0.v20161208</jetty.version>
-        <junit.version>4.12</junit.version>
+        <jquery.ui.version>1.12.1</jquery.ui.version>
+	<junit.version>4.12</junit.version>
+        <log4j.version>1.2.17</log4j.version>
         <maven.compiler.plugin.version>3.7.0</maven.compiler.plugin.version>
         <maven.war.plugin.version>3.2.0</maven.war.plugin.version>
+        <mysql.version>6.0.5</mysql.version>
+        <popper.js.version>1.12.9-1</popper.js.version>
         <slf4j.version>1.7.25</slf4j.version>
         <wicket.version>7.10.0</wicket.version>
     </properties>
@@ -221,6 +222,11 @@
             <groupId>org.webjars</groupId>
             <artifactId>jquery-ui</artifactId>
             <version>${jquery.ui.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>popper.js</artifactId>
+            <version>${popper.js.version}</version>
         </dependency>
 
     </dependencies>

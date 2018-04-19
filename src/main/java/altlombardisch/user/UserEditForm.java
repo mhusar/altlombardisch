@@ -4,12 +4,18 @@ import altlombardisch.HomePage;
 import altlombardisch.auth.SignInPage;
 import altlombardisch.auth.UserRoles;
 import altlombardisch.auth.WebSession;
-import altlombardisch.ui.panel.ModalMessagePanel;
+import altlombardisch.ui.AjaxView;
 import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
+import org.apache.wicket.ajax.markup.html.form.AjaxButton;
 import org.apache.wicket.markup.html.form.*;
+import org.apache.wicket.markup.html.panel.Panel;
+import org.apache.wicket.markup.repeater.Item;
+import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.validation.INullAcceptingValidator;
 import org.apache.wicket.validation.IValidatable;
@@ -20,27 +26,27 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 
 /**
- * A form for editing users.
+ * A form for editing special users.
  */
 class UserEditForm extends Form<User> {
     /**
-     * Creates a user edit form.
-     *
-     * @param model edited user model
+     * A user view displaying special users.
      */
-    public UserEditForm(IModel<User> model) {
-        super("userEditForm", model);
-    }
+    private final AjaxView<User> userView;
 
     /**
-     * Called when a user edit form is initialized.
+     * Creates a special user edit form.
+     *
+     * @param model         model of the user
+     * @param userView user view displaying users
      */
-    @Override
-    protected void onInitialize() {
-        super.onInitialize();
+    public UserEditForm(IModel<User> model, AjaxView<User> userView) {
+        super("userEditForm", model);
 
+        this.userView = userView;
         TextField<String> realNameTextField = new RequiredTextField<>("realName");
         TextField<String> usernameTextField = new RequiredTextField<>("username");
         ListChoice<UserRoles.Role> roleListChoice = new ListChoice<>("role",
@@ -52,6 +58,7 @@ class UserEditForm extends Form<User> {
         add(usernameTextField);
         add(new PasswordTextField("password").setResetPassword(false).setRequired(true));
         add(new CancelButton());
+        add(new SaveButton(this));
 
         if (WebSession.get().getUser().getRole().equals(UserRoles.Role.ADMIN)) {
             CheckBox enabledCheckBox = new CheckBox("enabled");
@@ -82,51 +89,95 @@ class UserEditForm extends Form<User> {
     }
 
     /**
-     * Called on form submit.
+     * A button which saves form contents.
      */
-    @Override
-    protected void onSubmit() {
-        UserDao userDao = new UserDao();
-        User user = getModelObject();
-        Integer userId = user.getId();
-        Boolean passwordChanged = true;
+    private final class SaveButton extends AjaxButton {
+        /**
+         * Creates a save button.
+         *
+         * @param form form that is submitted
+         */
+        public SaveButton(final Form<User> form) {
+            super("saveButton", form);
+        }
 
-        if (userId != null) {
-            User persistentUser = userDao.find(userId);
+        /**
+         * Called on form submit.
+         *
+         * @param target target that produces an Ajax response
+         * @param form   the submitted form
+         */
+        @Override
+        protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
+            Panel feedbackPanel = (Panel) form.getPage().get("feedbackPanel");
+            UserDao userDao = new UserDao();
+            User user = (User) form.getModelObject();
+            Integer userId = user.getId();
+            Boolean passwordChanged = true;
 
-            if (persistentUser != null) {
-                passwordChanged = !user.getPassword().equals(persistentUser.getPassword());
+            if (userId != null) {
+                User persistentUser = userDao.find(userId);
+
+                if (persistentUser != null) {
+                    passwordChanged = !user.getPassword().equals(persistentUser.getPassword());
+                }
+            }
+
+            if (passwordChanged) {
+                try {
+                    byte[] saltBytes = userDao.createRandomSaltBytes();
+                    String hashedPassword = userDao.hashPassword(user.getPassword(), saltBytes);
+
+                    user.setPassword(hashedPassword);
+                    user.setSalt(saltBytes);
+                } catch (NoSuchAlgorithmException | InvalidKeySpecException ignored) {
+                }
+            }
+
+            if (userDao.isTransient(user)) {
+                userDao.persist(user);
+                userId = user.getId();
+            } else {
+                userDao.merge(user);
+            }
+
+            if (WebSession.get().getUser().getRole().equals(UserRoles.Role.ADMIN)) {
+                User refreshedUser = userDao.find(userId);
+                IModel<User> refreshedUserModel = new Model<>(refreshedUser);
+                Form<User> newEditForm = new UserEditForm(
+                        new CompoundPropertyModel<>(refreshedUser), userView);
+
+                this.remove();
+                userView.setSelectedModel(refreshedUserModel);
+                userView.refresh(target);
+                target.add(feedbackPanel);
+                form.replaceWith(newEditForm);
+                target.add(newEditForm);
+                target.focusComponent(newEditForm.get("user"));
+            } else {
+                setResponsePage(HomePage.class);
             }
         }
 
-        if (passwordChanged) {
-            try {
-                byte[] saltBytes = userDao.createRandomSaltBytes();
-                String hashedPassword = userDao.hashPassword(user.getPassword(), saltBytes);
+        /**
+         * Called when form submit fails.
+         *
+         * @param target target that produces an Ajax response
+         * @param form   the submitted form
+         */
+        @Override
+        protected void onError(AjaxRequestTarget target, Form<?> form) {
+            Panel feedbackPanel = (Panel) form.getPage().get("feedbackPanel");
 
-                user.setPassword(hashedPassword);
-                user.setSalt(saltBytes);
-            } catch (NoSuchAlgorithmException | InvalidKeySpecException ignored) {
-            }
-        }
-
-        if (userDao.isTransient(user)) {
-            userDao.persist(user);
-        } else {
-            userDao.merge(user);
-        }
-
-        if (WebSession.get().getUser().getRole().equals(UserRoles.Role.ADMIN)) {
-            setResponsePage(UserEditPage.class);
-        } else {
-            setResponsePage(HomePage.class);
+            target.add(feedbackPanel);
+            target.appendJavaScript("setupFeedbackPanel(\"#" + feedbackPanel.getMarkupId() + "\")");
         }
     }
 
     /**
      * A button which cancels the editing of a user.
      */
-    private final class CancelButton extends AjaxLink<User> {
+    private final class CancelButton extends AjaxLink<Void> {
         /**
          * Creates a cancel button.
          */
@@ -140,9 +191,37 @@ class UserEditForm extends Form<User> {
          * @param target target that produces an Ajax response
          */
         @Override
+        @SuppressWarnings("unchecked")
         public void onClick(AjaxRequestTarget target) {
+            Form<User> editForm = findParent(UserEditForm.class);
+            Form<User> newEditForm = null;
+            Panel feedbackPanel = (Panel) editForm.getPage().get("feedbackPanel");
+            Iterator<Component> iterator = userView.iterator();
+
             if (WebSession.get().getUser().getRole().equals(UserRoles.Role.ADMIN)) {
-                setResponsePage(UserEditPage.class);
+                if (iterator.hasNext()) {
+                    Item<User> item = (Item<User>) iterator.next();
+                    IModel<User> firstUserModel = item.getModel();
+                    newEditForm = new UserEditForm(
+                            new CompoundPropertyModel<>(firstUserModel), userView);
+
+                    userView.setSelectedModel(firstUserModel);
+                } else {
+                    newEditForm = new UserEditForm(
+                            new CompoundPropertyModel<>(new User()), userView);
+
+                    userView.setSelectedModel(new Model<>(new User()));
+                }
+
+                this.remove();
+                userView.refresh(target);
+                editForm.replaceWith(newEditForm);
+                target.add(newEditForm);
+                target.focusComponent(newEditForm.get("user"));
+
+                // clear feedback panel
+                WebSession.get().clearFeedbackMessages();
+                target.add(feedbackPanel);
             } else {
                 setResponsePage(HomePage.class);
             }
@@ -150,7 +229,7 @@ class UserEditForm extends Form<User> {
     }
 
     /**
-     * A button which deletes a user.
+     * A button which deletes a siglum variant.
      */
     private final class DeleteButton extends AjaxLink<User> {
         /**
@@ -168,9 +247,30 @@ class UserEditForm extends Form<User> {
          * @param target target that produces an Ajax response
          */
         @Override
+        @SuppressWarnings("unchecked")
         public void onClick(AjaxRequestTarget target) {
-            // not needed because no data is ownded by a user
-            ModalMessagePanel userDeleteDeniedPanel = (ModalMessagePanel) getPage().get("userDeleteDeniedPanel");
+            Iterator<Component> iterator = userView.iterator();
+            IModel<User> selectedUserModel = null;
+            Item<User> lastItem = null;
+
+            while (iterator.hasNext()) {
+                Item<User> item = (Item<User>) iterator.next();
+
+                if (getModelObject().equals(item.getModelObject())) {
+                    if (lastItem != null) {
+                        selectedUserModel = lastItem.getModel();
+                    } else if (iterator.hasNext()) {
+                        selectedUserModel = ((Item<User>) iterator.next()).getModel();
+                        break;
+                    }
+                }
+
+                lastItem = item;
+            }
+
+            if (selectedUserModel == null) {
+                selectedUserModel = new Model<>(new User());
+            }
 
             if (getModelObject().equals(WebSession.get().getUser())) {
                 new UserDao().remove(getModelObject());
@@ -178,7 +278,22 @@ class UserEditForm extends Form<User> {
                 setResponsePage(SignInPage.class);
             } else {
                 new UserDao().remove(getModelObject());
-                setResponsePage(UserEditPage.class);
+
+                Form<User> editForm = findParent(UserEditForm.class);
+                Form<User> newEditForm = new UserEditForm(
+                        new CompoundPropertyModel<>(selectedUserModel), userView);
+                Panel feedbackPanel = (Panel) editForm.getPage().get("feedbackPanel");
+
+                this.remove();
+                userView.setSelectedModel(selectedUserModel);
+                userView.refresh(target);
+                editForm.replaceWith(newEditForm);
+                target.add(newEditForm);
+                target.focusComponent(newEditForm.get("user"));
+
+                // clear feedback panel
+                WebSession.get().clearFeedbackMessages();
+                target.add(feedbackPanel);
             }
         }
     }

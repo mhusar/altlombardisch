@@ -2,15 +2,18 @@ package altlombardisch.user;
 
 import altlombardisch.auth.UserRoles;
 import altlombardisch.auth.WebSession;
+import altlombardisch.ui.AjaxView;
 import altlombardisch.ui.TitleLabel;
 import altlombardisch.ui.page.BasePage;
 import altlombardisch.ui.panel.FeedbackPanel;
 import org.apache.wicket.Component;
 import org.apache.wicket.MarkupContainer;
+import org.apache.wicket.Page;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeAction;
 import org.apache.wicket.authroles.authorization.strategies.role.annotations.AuthorizeInstantiation;
+import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.Model;
 
@@ -42,12 +45,14 @@ public class UserEditPage extends BasePage {
     protected void onInitialize() {
         super.onInitialize();
         MarkupContainer feedbackPanel = new FeedbackPanel();
+        UserViewPanel userViewPanel = new UserViewPanel();
+        AjaxView<User> userView = userViewPanel.getUserView();
 
         add(new TitleLabel(getString("UserEditPage.header")));
         add(new UserDeleteDeniedPanel());
         add(feedbackPanel);
-        add(new UserEditPanel(userModel));
-        add(new UserViewPanel(userModel));
+        add(new UserEditPanel(userModel, userView));
+        add(userViewPanel);
         add(new AddUserButton());
         feedbackPanel.setOutputMarkupId(true);
     }
@@ -91,20 +96,22 @@ public class UserEditPage extends BasePage {
          */
         @Override
         public void onClick(AjaxRequestTarget target) {
-            MarkupContainer userEditPage = findParent(UserEditPage.class);
-            MarkupContainer userViewPanel = (UserViewPanel) userEditPage.get("userViewPanel");
-            MarkupContainer feedbackPanel = (FeedbackPanel) userEditPage.get("feedbackPanel");
-            Component userView = new UserViewPanel.UserView(new Model<>(new User()));
-            MarkupContainer userEditPanel = (UserEditPanel) userEditPage.get("userEditPanel");
-            Component userEditForm = new UserEditForm(new CompoundPropertyModel<>(new User()));
+            Page userEditPage = getPage();
+            Panel userViewPanel = (UserViewPanel) userEditPage.get("userViewPanel");
+            Panel userEditPanel = (Panel) userEditPage.get("userEditPanel");
+            AjaxView<User> userView = (AjaxView<User>) userViewPanel.get("userView");
+            Component userEditForm = userEditPanel.get("userEditForm");
+            Component newUserEditForm = new UserEditForm(new CompoundPropertyModel<>(new User()), userView);
 
-            target.add(userViewPanel.addOrReplace(userView));
-            target.add(userEditPanel.addOrReplace(userEditForm));
-            target.focusComponent(userEditForm.get("realName"));
+            userView.setSelectedModel(new Model<>(new User()));
+            userView.refresh(target);
+            userEditForm.replaceWith(newUserEditForm);
+            target.add(newUserEditForm);
+            target.focusComponent(newUserEditForm.get("user"));
 
             // clear feedback panel
             WebSession.get().clearFeedbackMessages();
-            target.add(feedbackPanel);
+            target.add(userEditPage.get("feedbackPanel"));
         }
     }
 }

@@ -49,10 +49,8 @@ public class FrontendBasePage extends WebPage {
      * @param response the response object
      */
     public void renderHead(IHeaderResponse response) {
-        PackageResourceReference globalStyle = new CssResourceReference(FrontendBasePage.class,
-                "styles/global.css");
-        PackageResourceReference globalScript = new JavaScriptResourceReference(FrontendBasePage.class,
-                "scripts/global.js");
+        PackageResourceReference frontendStyle = new CssResourceReference(FrontendBasePage.class,
+                "styles/frontend.css");
         PackageResourceReference iconicStyle = new CssResourceReference(FrontendBasePage.class,
                 "styles/open-iconic-bootstrap.css");
 
@@ -60,7 +58,7 @@ public class FrontendBasePage extends WebPage {
                 .forUrl("/webjars/jquery-ui/1.12.1/jquery-ui.min.css");
         HeaderItem bootstrapStyleItem = CssUrlReferenceHeaderItem
                 .forUrl("/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css");
-        CssHeaderItem globalStyleItem = CssHeaderItem.forReference(globalStyle);
+        CssHeaderItem frontendStyleItem = CssHeaderItem.forReference(frontendStyle);
         CssHeaderItem iconicStyleItem = CssHeaderItem.forReference(iconicStyle);
         HeaderItem jqueryScriptItem = JavaScriptHeaderItem.forReference(getApplication()
                 .getJavaScriptLibrarySettings().getJQueryReference());
@@ -70,7 +68,6 @@ public class FrontendBasePage extends WebPage {
                 .forUrl("webjars/popper.js/1.12.9-1/umd/popper.min.js");
         HeaderItem bootstrapScriptItem = JavaScriptUrlReferenceHeaderItem
                 .forUrl("/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js");
-        JavaScriptHeaderItem globalScriptItem = JavaScriptHeaderItem.forReference(globalScript);
 
         StringHeaderItem viewportItem = new StringHeaderItem("<meta name=\"viewport\" content=\"width=device-width, " +
                 "initial-scale=1, shrink-to-fit=no\">\n");
@@ -80,12 +77,11 @@ public class FrontendBasePage extends WebPage {
         response.render(jQueryUiStyleItem);
         response.render(bootstrapStyleItem);
         response.render(iconicStyleItem);
-        response.render(globalStyleItem);
+        response.render(frontendStyleItem);
         response.render(jqueryScriptItem);
         response.render(jQueryUiScriptItem);
         response.render(popperScriptItem);
         response.render(bootstrapScriptItem);
-        response.render(globalScriptItem);
         response.render(viewportItem);
         response.render(faviconItem);
     }

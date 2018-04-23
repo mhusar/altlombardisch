@@ -19,6 +19,6 @@ public class HomePage extends FrontendBasePage {
     @Override
     protected void onInitialize() {
         super.onInitialize();
-        add(new TitleLabel(getString("HomePage.overview")));
+        add(new TitleLabel(getString("HomePage.header")));
     }
 }

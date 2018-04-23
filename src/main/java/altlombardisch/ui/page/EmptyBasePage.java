@@ -49,10 +49,10 @@ public class EmptyBasePage extends WebPage {
      * @param response the response object
      */
     public void renderHead(IHeaderResponse response) {
-        PackageResourceReference globalStyle = new CssResourceReference(EmptyBasePage.class,
-                "styles/global.css");
-        PackageResourceReference globalScript = new JavaScriptResourceReference(EmptyBasePage.class,
-                "scripts/global.js");
+        PackageResourceReference cmsStyle = new CssResourceReference(EmptyBasePage.class,
+                "styles/cms.css");
+        PackageResourceReference cmsScript = new JavaScriptResourceReference(EmptyBasePage.class,
+                "scripts/cms.js");
         PackageResourceReference iconicStyle = new CssResourceReference(EmptyBasePage.class,
                 "styles/open-iconic-bootstrap.css");
 
@@ -60,7 +60,7 @@ public class EmptyBasePage extends WebPage {
                 .forUrl("/webjars/jquery-ui/1.12.1/jquery-ui.min.css");
         HeaderItem bootstrapStyleItem = CssUrlReferenceHeaderItem
                 .forUrl("/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css");
-        CssHeaderItem globalStyleItem = CssHeaderItem.forReference(globalStyle);
+        CssHeaderItem cmsStyleItem = CssHeaderItem.forReference(cmsStyle);
         CssHeaderItem iconicStyleItem = CssHeaderItem.forReference(iconicStyle);
         HeaderItem jqueryScriptItem = JavaScriptHeaderItem.forReference(getApplication()
                 .getJavaScriptLibrarySettings().getJQueryReference());
@@ -70,7 +70,7 @@ public class EmptyBasePage extends WebPage {
                 .forUrl("webjars/popper.js/1.12.9-1/umd/popper.min.js");
         HeaderItem bootstrapScriptItem = JavaScriptUrlReferenceHeaderItem
                 .forUrl("/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js");
-        JavaScriptHeaderItem globalScriptItem = JavaScriptHeaderItem.forReference(globalScript);
+        JavaScriptHeaderItem cmsScriptItem = JavaScriptHeaderItem.forReference(cmsScript);
 
         StringHeaderItem viewportItem = new StringHeaderItem("<meta name=\"viewport\" content=\"width=device-width, " +
                 "initial-scale=1, shrink-to-fit=no\">\n");
@@ -80,12 +80,12 @@ public class EmptyBasePage extends WebPage {
         response.render(jQueryUiStyleItem);
         response.render(bootstrapStyleItem);
         response.render(iconicStyleItem);
-        response.render(globalStyleItem);
+        response.render(cmsStyleItem);
         response.render(jqueryScriptItem);
         response.render(jQueryUiScriptItem);
         response.render(popperScriptItem);
         response.render(bootstrapScriptItem);
-        response.render(globalScriptItem);
+        response.render(cmsScriptItem);
         response.render(viewportItem);
         response.render(faviconItem);
     }

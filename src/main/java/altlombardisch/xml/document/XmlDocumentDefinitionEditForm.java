@@ -142,7 +142,7 @@ public class XmlDocumentDefinitionEditForm extends Form<XmlDocumentDefinition> {
             if (definitionDao.isTransient(definition)) {
                 definitionDao.persist(definition);
             } else {
-                definitionDao.merge(definition);
+                definition = definitionDao.merge(definition);
             }
 
             Form<XmlDocumentDefinition> newEditForm = new XmlDocumentDefinitionEditForm(

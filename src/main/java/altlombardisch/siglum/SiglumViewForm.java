@@ -39,37 +39,25 @@ public class SiglumViewForm extends Form<Siglum> {
         XmlDocumentDefinitionDao documentDefinitionDao = new XmlDocumentDefinitionDao();
         XmlDocumentDefinition fontMarkupDocumentDefinition = documentDefinitionDao
                 .findByIdentifier("fontMarkup");
+        XmlDocumentDefinition siglumTextMarkupDocumentDefinition = documentDefinitionDao
+                .findByIdentifier("siglumTextMarkup");
         XmlTextField taggedNameTextField = new XmlTextField("taggedName",
                 fontMarkupDocumentDefinition);
-        XmlEditor textXmlEditor = new XmlEditor("text",
-                new PropertyModel<String>(model, "text"), new Model<String>(
-                        new StringResourceModel("Siglum.text").getString()));
+        XmlEditor textXmlEditor = new XmlEditor("text", new PropertyModel<String>(model, "text"),
+                new Model<String>(new StringResourceModel("Siglum.text").getString()),
+                siglumTextMarkupDocumentDefinition);
         ListChoice<SiglumType.Type> typeListChoice = new ListChoice<SiglumType.Type>(
                 "type", new PropertyModel<SiglumType.Type>(getModelObject(),
                         "type"), new ArrayList<SiglumType.Type>(
                         Arrays.asList(SiglumType.Type.values())),
                 new EnumChoiceRenderer<SiglumType.Type>(), 1);
-        CheckBox gasconCheckbox = new CheckBox("gascon");
-        CheckBox occitanCheckbox = new CheckBox("occitan");
 
         add(taggedNameTextField);
-        add(new XmlTextField("localization", fontMarkupDocumentDefinition));
-        add(new XmlTextField("language", fontMarkupDocumentDefinition));
-        add(new XmlTextField("dating", fontMarkupDocumentDefinition));
-        add(new NumberTextField("numericalDating"));
-        add(new XmlTextField("singularDate", fontMarkupDocumentDefinition));
-        add(new NumberTextField("numericalSingularDate"));
         add(textXmlEditor);
         add(typeListChoice);
-        add(new TextField<String>("position"));
-        add(gasconCheckbox);
-        add(occitanCheckbox);
-        add(new CheckBox("unnecessary"));
         add(new ToIndexButton("toIndexButton"));
 
         taggedNameTextField.setRequired(true);
-        textXmlEditor.setDocumentDefinition(documentDefinitionDao
-                .findByIdentifier("siglumTextMarkup"));
         textXmlEditor.setMaximumLength(5000);
         textXmlEditor.setReadOnly(true);
         textXmlEditor.setRows(5);

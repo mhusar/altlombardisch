@@ -67,11 +67,13 @@ public class SiglumEditForm extends Form<Siglum> {
         XmlDocumentDefinitionDao documentDefinitionDao = new XmlDocumentDefinitionDao();
         XmlDocumentDefinition fontMarkupDocumentDefinition = documentDefinitionDao
                 .findByIdentifier("fontMarkup");
+        XmlDocumentDefinition siglumTextMarkupDocumentDefinition = documentDefinitionDao
+                .findByIdentifier("siglumTextMarkup");
         XmlTextField taggedNameTextField = new XmlTextField("taggedName",
                 fontMarkupDocumentDefinition);
-        XmlEditor textXmlEditor = new XmlEditor("text",
-                new PropertyModel<String>(getModel(), "text"), new Model<String>(
-                        new StringResourceModel("Siglum.text").getString()));
+        XmlEditor textXmlEditor = new XmlEditor("text", new PropertyModel<String>(getModel(), "text"),
+                new Model<String>(new StringResourceModel("Siglum.text").getString()),
+                siglumTextMarkupDocumentDefinition);
         ListChoice<SiglumType.Type> typeListChoice = new ListChoice<SiglumType.Type>(
                 "type", new PropertyModel<SiglumType.Type>(getModelObject(),
                         "type"), new ArrayList<SiglumType.Type>(
@@ -92,8 +94,6 @@ public class SiglumEditForm extends Form<Siglum> {
 
         taggedNameTextField.setRequired(true);
         taggedNameTextField.add(new UniqueSiglumNameValidator(getModel()));
-        textXmlEditor.setDocumentDefinition(documentDefinitionDao
-                .findByIdentifier("siglumTextMarkup"));
         textXmlEditor.setMaximumLength(5000);
         textXmlEditor.setRows(5);
         typeListChoice.add(new RequiredTypeValidator());

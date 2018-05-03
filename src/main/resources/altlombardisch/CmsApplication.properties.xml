@@ -135,6 +135,8 @@
   <entry key="XmlDocumentDefinitionViewPanel.dummyItemText">Kein Eintrag vorhanden</entry>
   <entry key="XmlEditor.validatorMessage">Fehler bei XML-Validierung. Mehrzeiliges Eingabefeld
     {0}, Zeile {1}, Spalte {2}, Fehlermeldung: {3}</entry>
+  <entry key="XmlEditor.validatorMessage2">Fehler bei XML-Validierung. Mehrzeiliges Eingabefeld
+    {0}, Fehlermeldung: {1}</entry>
   <entry key="XmlTagDefinitionViewPanel.dummyItemText">Kein Eintrag vorhanden</entry>
   <entry key="XmlTagDefinition.name">Name</entry>
   <entry key="XmlTagDefinition.selfClosing">Tag ist selbstschließend</entry>
@@ -145,4 +147,5 @@
   <entry key="XmlTagDefinitionEditPage.header">Tags bearbeiten</entry>
   <entry key="XmlTextField.validatorMessage">Fehler bei XML-Validierung. Eingabefeld {0}, Spalte
     {1}, Fehlermeldung: {2}</entry>
+  <entry key="XmlTextField.validatorMessage2">Fehler bei XML-Validierung. Eingabefeld {0}, Fehlermeldung: {1}</entry>
 </properties>

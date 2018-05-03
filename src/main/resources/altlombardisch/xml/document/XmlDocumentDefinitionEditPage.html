@@ -36,24 +36,46 @@
                             <div wicket:id="feedbackPanel"></div>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <label for="rootElement"
-                               class="col-sm-2 col-form-label">
-                            <wicket:message key="XmlDocumentDefinition.rootElement"></wicket:message>
-                        </label>
-                        <div class="col-sm-10">
-                            <input type="text" wicket:id="rootElement"
-                                   id="rootElement" class="form-control"
-                                   autofocus="autofocus" required="required"
-                                   maxlength="100"/>
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-schema-tab" data-toggle="tab" href="#nav-schema" role="tab" aria-controls="nav-schema" aria-selected="true">
+                                <wicket:message key="XmlDocumentDefinition.schema"></wicket:message>
+                            </a>
+                            <a class="nav-item nav-link" id="nav-xsl-tab" data-toggle="tab" href="#nav-xsl" role="tab" aria-controls="nav-xsl" aria-selected="false">
+                                <wicket:message key="XmlDocumentDefinition.xsl"></wicket:message>
+                            </a>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">
-                            <wicket:message key="XmlDocumentDefinition.schema"></wicket:message>
-                        </label>
-                        <div class="col-sm-10">
-                            <div id="schema" wicket:id="schema"></div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-schema" role="tabpanel" aria-labelledby="nav-schema-tab">
+                            <div class="form-group row mt-3">
+                                <label for="rootElement"
+                                       class="col-sm-2 col-form-label">
+                                    <wicket:message key="XmlDocumentDefinition.rootElement"></wicket:message>
+                                </label>
+                                <div class="col-sm-10">
+                                    <input type="text" wicket:id="rootElement" id="rootElement" class="form-control"
+                                           autofocus="autofocus" required="required" maxlength="100"/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">
+                                    <wicket:message key="XmlDocumentDefinition.schema"></wicket:message>
+                                </label>
+                                <div class="col-sm-10">
+                                    <div wicket:id="schema"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade tab-pane-fix" id="nav-xsl" role="tabpanel" aria-labelledby="nav-xsl-tab">
+                            <div class="form-group row mt-3">
+                                <label class="col-sm-2 col-form-label">
+                                    <wicket:message key="XmlDocumentDefinition.xsl"></wicket:message>
+                                </label>
+                                <div class="col-sm-10">
+                                    <div wicket:id="xsl"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group row">

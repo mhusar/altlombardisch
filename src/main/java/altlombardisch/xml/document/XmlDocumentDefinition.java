@@ -69,6 +69,12 @@ public class XmlDocumentDefinition implements Serializable {
     private String schema;
 
     /**
+     * Stylesheet for transforming XML document into XHTML.
+     */
+    @Column(name = "\"xsl\"", columnDefinition = "TEXT", length = 65535)
+    private String xsl;
+
+    /**
      * A list of definitions for child tags.
      */
     @OneToMany(mappedBy = "documentDefinition", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -180,8 +186,27 @@ public class XmlDocumentDefinition implements Serializable {
     }
 
     /**
-     * Returns the schema of a document definition.
+     * Returns the stylesheet of a document definition.
      * 
+     * @return Stylesheet of a document definition.
+     */
+    public String getXsl() {
+        return xsl;
+    }
+
+    /**
+     * Sets the stylesheet of a document definition.
+     * 
+     * @param xsl
+     *            the stylesheet of a document definition
+     */
+    public void setXsl(String xsl) {
+        this.xsl = xsl;
+    }
+
+    /**
+     * Returns the schema of a document definition.
+     *
      * @return Schema of a document definition.
      */
     public String getSchema() {
@@ -190,7 +215,7 @@ public class XmlDocumentDefinition implements Serializable {
 
     /**
      * Sets the schema of a document definition.
-     * 
+     *
      * @param schema
      *            the schema of a document definition
      */

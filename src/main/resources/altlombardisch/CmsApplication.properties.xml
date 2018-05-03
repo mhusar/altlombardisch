@@ -133,6 +133,7 @@
   <entry key="XmlDocumentDefinitionEditPage.editTags">Tags →</entry>
   <entry key="XmlDocumentDefinitionEditPage.header">Dokumentenaufbau</entry>
   <entry key="XmlDocumentDefinitionViewPanel.dummyItemText">Kein Eintrag vorhanden</entry>
+  <entry key="XmlDocumentDefinition.xsl">XSL</entry>
   <entry key="XmlEditor.validatorMessage">Fehler bei XML-Validierung. Mehrzeiliges Eingabefeld
     {0}, Zeile {1}, Spalte {2}, Fehlermeldung: {3}</entry>
   <entry key="XmlEditor.validatorMessage2">Fehler bei XML-Validierung. Mehrzeiliges Eingabefeld

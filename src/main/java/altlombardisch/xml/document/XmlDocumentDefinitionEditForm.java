@@ -3,6 +3,7 @@ package altlombardisch.xml.document;
 import altlombardisch.ui.AjaxView;
 import altlombardisch.ui.panel.FeedbackPanel;
 import altlombardisch.ui.xml.XmlEditor;
+import altlombardisch.ui.xml.XmlValidator;
 import altlombardisch.xml.tag.XmlTagDefinitionEditPage;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.AjaxLink;
@@ -38,23 +39,24 @@ public class XmlDocumentDefinitionEditForm extends Form<XmlDocumentDefinition> {
      * @param definitionView
      *            view displaying document definitions
      */
-    public XmlDocumentDefinitionEditForm(String id,
-            IModel<XmlDocumentDefinition> model,
-            AjaxView<XmlDocumentDefinition> definitionView) {
+    public XmlDocumentDefinitionEditForm(String id, IModel<XmlDocumentDefinition> model,
+                                         AjaxView<XmlDocumentDefinition> definitionView) {
         super(id, model);
 
         this.definitionView = definitionView;
-        TextField<String> rootElementTextfield = new RequiredTextField<String>(
-                "rootElement", new PropertyModel<String>(model, "rootElement"));
-        XmlEditor schemaXmlEditor = new XmlEditor("schema",
-                new PropertyModel<String>(model, "schema"), new Model<String>(
-                        new StringResourceModel("XmlDocumentDefinition.schema")
-                                .getString()));
+        TextField<String> rootElementTextfield = new RequiredTextField<String>("rootElement",
+                new PropertyModel<String>(model, "rootElement"));
+        XmlEditor schemaXmlEditor = new XmlEditor("schema", new PropertyModel<String>(model, "schema"),
+                new Model<String>(new StringResourceModel("XmlDocumentDefinition.schema").getString()));
+        XmlEditor xslXmlEditor = new XmlEditor("xsl", new PropertyModel<String>(model, "xsl"),
+                new Model<String>(new StringResourceModel("XmlDocumentDefinition.xsl").getString()),
+                XmlValidator.ValidatorType.Type.XSL);
 
         add(new XmlTagDefinitionEditPageLink("editTagsLink", model));
         add(new FeedbackPanel().setEscapeModelStrings(false).setOutputMarkupId(true));
         add(rootElementTextfield);
         add(schemaXmlEditor);
+        add(xslXmlEditor);
         add(new CancelButton("cancelButton"));
         add(new SaveButton("saveButton", this));
 
@@ -62,6 +64,9 @@ public class XmlDocumentDefinitionEditForm extends Form<XmlDocumentDefinition> {
         schemaXmlEditor.setRows(20);
         schemaXmlEditor.setMaximumLength(5000);
         schemaXmlEditor.setRequired(true);
+        xslXmlEditor.setRows(20);
+        xslXmlEditor.setMaximumLength(5000);
+        xslXmlEditor.setRequired(false);
     }
 
     /**
@@ -83,8 +88,7 @@ public class XmlDocumentDefinitionEditForm extends Form<XmlDocumentDefinition> {
          * @param model
          *            parent document definition model
          */
-        public XmlTagDefinitionEditPageLink(String id,
-                IModel<XmlDocumentDefinition> model) {
+        public XmlTagDefinitionEditPageLink(String id, IModel<XmlDocumentDefinition> model) {
             super(id, model);
         }
 
@@ -95,8 +99,7 @@ public class XmlDocumentDefinitionEditForm extends Form<XmlDocumentDefinition> {
         public void onClick() {
             XmlDocumentDefinition reloadedDefinition = new XmlDocumentDefinitionDao().findById(getModelObject().getId());
 
-            setResponsePage(new XmlTagDefinitionEditPage(
-                    new Model<XmlDocumentDefinition>(reloadedDefinition)));
+            setResponsePage(new XmlTagDefinitionEditPage(new Model<XmlDocumentDefinition>(reloadedDefinition)));
         }
     }
 
@@ -134,13 +137,12 @@ public class XmlDocumentDefinitionEditForm extends Form<XmlDocumentDefinition> {
         protected void onSubmit(AjaxRequestTarget target, Form<?> form) {
             Panel feedbackPanel = (Panel) form.get("feedbackPanel");
             XmlDocumentDefinitionDao definitionDao = new XmlDocumentDefinitionDao();
-            XmlDocumentDefinition definition = (XmlDocumentDefinition) form
-                    .getModelObject();
+            XmlDocumentDefinition definition = (XmlDocumentDefinition) form.getModelObject();
 
             if (definitionDao.isTransient(definition)) {
                 definitionDao.persist(definition);
             } else {
-                definitionDao.merge(definition);
+                definition = definitionDao.merge(definition);
             }
 
             Form<XmlDocumentDefinition> newEditForm = new XmlDocumentDefinitionEditForm(
@@ -149,9 +151,7 @@ public class XmlDocumentDefinitionEditForm extends Form<XmlDocumentDefinition> {
                     definitionView);
 
             this.remove();
-            definitionView
-                    .setSelectedModel((IModel<XmlDocumentDefinition>) form
-                            .getModel());
+            definitionView.setSelectedModel((IModel<XmlDocumentDefinition>) form.getModel());
             definitionView.refresh(target);
             target.add(feedbackPanel);
             form.replaceWith(newEditForm);
@@ -209,8 +209,7 @@ public class XmlDocumentDefinitionEditForm extends Form<XmlDocumentDefinition> {
                     .findFirst();
 
             if (definition instanceof XmlDocumentDefinition) {
-                IModel<XmlDocumentDefinition> model = new Model<XmlDocumentDefinition>(
-                        definition);
+                IModel<XmlDocumentDefinition> model = new Model<XmlDocumentDefinition>(definition);
                 Form<XmlDocumentDefinition> newEditForm = new XmlDocumentDefinitionEditForm(
                         "definitionEditForm", model, definitionView);
 

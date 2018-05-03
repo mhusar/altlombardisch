@@ -817,3 +817,15 @@ ul.homePage li:last-child {
 .ui-menu-item-wrapper.ui-state-active i {
   color: white;
 }
+
+.tab-pane-fix {
+  display: block !important;
+  position: absolute;
+  left: -10000px;
+}
+
+.tab-pane-fix.show {
+  display: block;
+  position: static;
+  left: auto;
+}

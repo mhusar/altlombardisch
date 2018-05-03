@@ -32,8 +32,7 @@ import java.util.List;
  * 
  * @see <a href="http://ace.c9.io">http://ace.c9.io</a>
  */
-public class XmlEditor extends FormComponentPanel<String> implements
-        TagDataProvider {
+public class XmlEditor extends FormComponentPanel<String> implements TagDataProvider {
     /**
      * Determines if a deserialized file is compatible with this class.
      */
@@ -63,6 +62,11 @@ public class XmlEditor extends FormComponentPanel<String> implements
      * Number of rows of the XML editor.
      */
     private Integer rows = 3;
+
+    /**
+     * Type of XML validator.
+     */
+    private XmlValidator.ValidatorType.Type validatorType;
 
     /**
      * Document definition of a XML document.
@@ -98,6 +102,7 @@ public class XmlEditor extends FormComponentPanel<String> implements
         super(id, model);
 
         this.labelModel = labelModel;
+        validatorType = XmlValidator.ValidatorType.Type.SCHEMA;
         SecureRandom random = new SecureRandom();
         String randomSuffix = new BigInteger(130, random).toString(32);
         mirrorId = "mirror-" + randomSuffix;
@@ -116,16 +121,96 @@ public class XmlEditor extends FormComponentPanel<String> implements
      * @param autofocus
      *            defines if the textarea should have autofocus
      */
-    public XmlEditor(String id, IModel<String> model,
-            IModel<String> labelModel, Boolean autofocus) {
-        super(id, model);
-
-        this.labelModel = labelModel;
+    public XmlEditor(String id, IModel<String> model, IModel<String> labelModel, Boolean autofocus) {
+        this(id, model, labelModel);
         this.autofocus = autofocus;
-        SecureRandom random = new SecureRandom();
-        String randomSuffix = new BigInteger(130, random).toString(32);
-        mirrorId = "mirror-" + randomSuffix;
-        textareaId = "textarea-" + randomSuffix;
+    }
+
+    /**
+     * Creates a XML editor.
+     *
+     * @param id
+     *            ID of the XML editor
+     * @param model
+     *            model of the textarea
+     * @param labelModel
+     *            label model of the textarea
+     * @param validatorType
+     *            validator type
+     */
+    public XmlEditor(String id, IModel<String> model, IModel<String> labelModel,
+                     XmlValidator.ValidatorType.Type validatorType) {
+        this(id, model, labelModel);
+        this.validatorType = validatorType;
+
+        if (validatorType == null) {
+            throw new IllegalArgumentException("Argument validatorType cannot be null.");
+        } else if (validatorType.equals(XmlValidator.ValidatorType.Type.DOCUMENT)) {
+            throw new IllegalArgumentException("DOCUMENT is not allowed as validator type.");
+        }
+    }
+
+    /**
+     * Creates a XML editor.
+     *
+     * @param id
+     *            ID of the XML editor
+     * @param model
+     *            model of the textarea
+     * @param labelModel
+     *            label model of the textarea
+     * @param validatorType
+     *            validator type
+     * @param autofocus
+     *            defines if the textarea should have autofocus
+     */
+    public XmlEditor(String id, IModel<String> model, IModel<String> labelModel,
+                     XmlValidator.ValidatorType.Type validatorType, Boolean autofocus) {
+        this(id, model, labelModel, validatorType);
+        this.autofocus = autofocus;
+    }
+
+    /**
+     * Creates a XML editor.
+     *
+     * @param id
+     *            ID of the XML editor
+     * @param model
+     *            model of the textarea
+     * @param labelModel
+     *            label model of the textarea
+     * @param documentDefinition
+     *            a document definition of a XML document
+     */
+    public XmlEditor(String id, IModel<String> model, IModel<String> labelModel,
+                     XmlDocumentDefinition documentDefinition) {
+        this(id, model, labelModel);
+        this.validatorType = XmlValidator.ValidatorType.Type.DOCUMENT;
+        this.documentDefinition = documentDefinition;
+
+        if (documentDefinition == null) {
+            throw new IllegalArgumentException("Argument documentDefinition cannot be null.");
+        }
+    }
+
+    /**
+     * Creates a XML editor.
+     *
+     * @param id
+     *            ID of the XML editor
+     * @param model
+     *            model of the textarea
+     * @param labelModel
+     *            label model of the textarea
+     * @param documentDefinition
+     *            a document definition of a XML document
+     * @param autofocus
+     *            defines if the textarea should have autofocus
+     */
+    public XmlEditor(String id, IModel<String> model, IModel<String> labelModel,
+                     XmlDocumentDefinition documentDefinition, Boolean autofocus) {
+        this(id, model, labelModel, documentDefinition);
+        this.autofocus = autofocus;
     }
 
     /**
@@ -141,7 +226,7 @@ public class XmlEditor extends FormComponentPanel<String> implements
     /**
      * Sets the editor readonly.
      * 
-     * @param readonly
+     * @param readOnly
      *            state of the editor
      */
     public void setReadOnly(Boolean readOnly) {
@@ -157,16 +242,6 @@ public class XmlEditor extends FormComponentPanel<String> implements
      */
     public void setRows(Integer rows) {
         this.rows = rows;
-    }
-
-    /**
-     * Sets the definition of a XML document.
-     * 
-     * @param documentDefinition
-     *            a document definition of a XML document
-     */
-    public void setDocumentDefinition(XmlDocumentDefinition documentDefinition) {
-        this.documentDefinition = documentDefinition;
     }
 
     /**
@@ -195,30 +270,25 @@ public class XmlEditor extends FormComponentPanel<String> implements
         textArea.add(new XmlEditorBehavior());
         textArea.add(new StringValidator(null, maximumLength));
 
-        if (documentDefinition instanceof XmlDocumentDefinition) {
+        if (validatorType.equals(XmlValidator.ValidatorType.Type.DOCUMENT)) {
             textArea.add(new XmlValidator(textArea, documentDefinition));
         } else {
-            textArea.add(new XmlValidator(textArea));
+            textArea.add(new XmlValidator(textArea, validatorType));
         }
 
         // initialize data for clickable tags
-        initializeTagData(container, documentDefinition);
+        if (documentDefinition != null) {
+            initializeTagData(container, documentDefinition);
+        }
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void initializeTagData(Component component,
-            XmlDocumentDefinition documentDefinition) {
-        if (!(documentDefinition instanceof XmlDocumentDefinition)) {
-            return;
-        }
-
+    public void initializeTagData(Component component, XmlDocumentDefinition documentDefinition) {
         JsonObject documentData = XmlHelper.getDocumentData(documentDefinition);
-
-        component.add(AttributeModifier.append("data-document",
-                documentData.toString()));
+        component.add(AttributeModifier.append("data-document", documentData.toString()));
     }
 
     /**

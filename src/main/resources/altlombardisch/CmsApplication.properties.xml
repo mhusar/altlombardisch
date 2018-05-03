@@ -80,6 +80,7 @@
   <entry key="SiglumIndexPage.header">Sigel</entry>
   <entry key="SiglumIndexPage.name">Name</entry>
   <entry key="SiglumIndexPage.new">Sigel erstellen</entry>
+  <entry key="SiglumTextPreviewPanel.preview">Vorschau</entry>
   <entry key="SiglumViewPage.header">Sigel ansehen</entry>
   <entry key="SignInPage.header">Bitte anmelden</entry>
   <entry key="SignInPage.passwordWrongMessage">Das genannte Passwort ist falsch.</entry>
@@ -133,8 +134,11 @@
   <entry key="XmlDocumentDefinitionEditPage.editTags">Tags →</entry>
   <entry key="XmlDocumentDefinitionEditPage.header">Dokumentenaufbau</entry>
   <entry key="XmlDocumentDefinitionViewPanel.dummyItemText">Kein Eintrag vorhanden</entry>
+  <entry key="XmlDocumentDefinition.xsl">XSL</entry>
   <entry key="XmlEditor.validatorMessage">Fehler bei XML-Validierung. Mehrzeiliges Eingabefeld
     {0}, Zeile {1}, Spalte {2}, Fehlermeldung: {3}</entry>
+  <entry key="XmlEditor.validatorMessage2">Fehler bei XML-Validierung. Mehrzeiliges Eingabefeld
+    {0}, Fehlermeldung: {1}</entry>
   <entry key="XmlTagDefinitionViewPanel.dummyItemText">Kein Eintrag vorhanden</entry>
   <entry key="XmlTagDefinition.name">Name</entry>
   <entry key="XmlTagDefinition.selfClosing">Tag ist selbstschließend</entry>
@@ -145,4 +149,5 @@
   <entry key="XmlTagDefinitionEditPage.header">Tags bearbeiten</entry>
   <entry key="XmlTextField.validatorMessage">Fehler bei XML-Validierung. Eingabefeld {0}, Spalte
     {1}, Fehlermeldung: {2}</entry>
+  <entry key="XmlTextField.validatorMessage2">Fehler bei XML-Validierung. Eingabefeld {0}, Fehlermeldung: {1}</entry>
 </properties>

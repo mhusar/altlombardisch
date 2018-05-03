@@ -46,8 +46,7 @@ public class XmlErrorHandler implements ErrorHandler {
      * @param lineOffset
      *            line offset for error messages
      */
-    public XmlErrorHandler(Component component,
-            IValidatable<String> validatable, Integer lineOffset) {
+    public XmlErrorHandler(Component component, IValidatable<String> validatable, Integer lineOffset) {
         this.component = component;
         this.validatable = validatable;
         this.lineOffset = lineOffset;
@@ -88,23 +87,20 @@ public class XmlErrorHandler implements ErrorHandler {
         if (component instanceof TextArea<?>) {
             messageModel = new StringResourceModel(
                     "XmlEditor.validatorMessage", component).setParameters(
-                    "<b>" + component.findParent(XmlEditor.class).getId()
-                            + "</b>",
-                    "<b>" + (exception.getLineNumber() + lineOffset) + "</b>",
-                    "<b>" + exception.getColumnNumber() + "</b>",
+                    String.format("<b>%s</b>", component.findParent(XmlEditor.class).getId()),
+                    String.format("<b>%d</b>", exception.getLineNumber() + lineOffset),
+                    String.format("<b>%d</b>", exception.getColumnNumber()),
                     exception.getMessage());
         } else if (component instanceof TextField<?>) {
             messageModel = new StringResourceModel(
                     "XmlTextField.validatorMessage", component).setParameters(
-                    "<b>" + component.getId() + "</b>",
-                    "<b>" + exception.getColumnNumber() + "</b>",
+                    String.format("<b>%s</b>", component.getId()),
+                    String.format("<b>%d</b>", exception.getColumnNumber()),
                     exception.getMessage());
         }
 
         if (messageModel instanceof StringResourceModel) {
-            IValidationError error = new ValidationError(
-                    messageModel.getString());
-
+            IValidationError error = new ValidationError(messageModel.getString());
             validatable.error(error);
         }
     }

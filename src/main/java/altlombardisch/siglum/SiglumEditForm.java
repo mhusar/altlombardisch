@@ -1,5 +1,6 @@
 package altlombardisch.siglum;
 
+import altlombardisch.siglum.text.SiglumTextPreviewPanel;
 import altlombardisch.ui.SubmitLink;
 import altlombardisch.ui.panel.FeedbackPanel;
 import altlombardisch.ui.panel.ModalMessagePanel;
@@ -91,6 +92,7 @@ public class SiglumEditForm extends Form<Siglum> {
         add(saveButton);
         add(new DeleteButton("deleteButton", getModel())
                 .setVisible(!(isSiglumTransient(getModel()))));
+        add(new SiglumTextPreviewPanel(getModel()));
 
         taggedNameTextField.setRequired(true);
         taggedNameTextField.add(new UniqueSiglumNameValidator(getModel()));

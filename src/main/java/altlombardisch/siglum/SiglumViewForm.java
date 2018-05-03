@@ -1,6 +1,6 @@
 package altlombardisch.siglum;
 
-import altlombardisch.ui.NumberTextField;
+import altlombardisch.siglum.text.SiglumTextPreviewPanel;
 import altlombardisch.ui.xml.XmlEditor;
 import altlombardisch.ui.xml.XmlTextField;
 import altlombardisch.xml.document.XmlDocumentDefinition;
@@ -56,6 +56,7 @@ public class SiglumViewForm extends Form<Siglum> {
         add(textXmlEditor);
         add(typeListChoice);
         add(new ToIndexButton("toIndexButton"));
+        add(new SiglumTextPreviewPanel(getModel()));
 
         taggedNameTextField.setRequired(true);
         textXmlEditor.setMaximumLength(5000);

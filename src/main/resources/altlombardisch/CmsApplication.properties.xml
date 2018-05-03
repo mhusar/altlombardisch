@@ -80,6 +80,7 @@
   <entry key="SiglumIndexPage.header">Sigel</entry>
   <entry key="SiglumIndexPage.name">Name</entry>
   <entry key="SiglumIndexPage.new">Sigel erstellen</entry>
+  <entry key="SiglumTextPreviewPanel.preview">Vorschau</entry>
   <entry key="SiglumViewPage.header">Sigel ansehen</entry>
   <entry key="SignInPage.header">Bitte anmelden</entry>
   <entry key="SignInPage.passwordWrongMessage">Das genannte Passwort ist falsch.</entry>

@@ -186,25 +186,6 @@ public class XmlDocumentDefinition implements Serializable {
     }
 
     /**
-     * Returns the stylesheet of a document definition.
-     * 
-     * @return Stylesheet of a document definition.
-     */
-    public String getXsl() {
-        return xsl;
-    }
-
-    /**
-     * Sets the stylesheet of a document definition.
-     * 
-     * @param xsl
-     *            the stylesheet of a document definition
-     */
-    public void setXsl(String xsl) {
-        this.xsl = xsl;
-    }
-
-    /**
      * Returns the schema of a document definition.
      *
      * @return Schema of a document definition.
@@ -221,6 +202,25 @@ public class XmlDocumentDefinition implements Serializable {
      */
     public void setSchema(String schema) {
         this.schema = schema;
+    }
+
+    /**
+     * Returns the stylesheet of a document definition.
+     *
+     * @return Stylesheet of a document definition.
+     */
+    public String getXsl() {
+        return xsl;
+    }
+
+    /**
+     * Sets the stylesheet of a document definition.
+     *
+     * @param xsl
+     *            the stylesheet of a document definition
+     */
+    public void setXsl(String xsl) {
+        this.xsl = xsl;
     }
 
     /**

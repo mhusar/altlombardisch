@@ -49,25 +49,25 @@ public class EmptyBasePage extends WebPage {
      * @param response the response object
      */
     public void renderHead(IHeaderResponse response) {
+        PackageResourceReference iconicStyle = new CssResourceReference(EmptyBasePage.class,
+                "styles/open-iconic-bootstrap.css");
         PackageResourceReference cmsStyle = new CssResourceReference(EmptyBasePage.class,
                 "styles/cms.css");
         PackageResourceReference cmsScript = new JavaScriptResourceReference(EmptyBasePage.class,
                 "scripts/cms.js");
-        PackageResourceReference iconicStyle = new CssResourceReference(EmptyBasePage.class,
-                "styles/open-iconic-bootstrap.css");
 
         HeaderItem jQueryUiStyleItem = CssUrlReferenceHeaderItem
                 .forUrl("/webjars/jquery-ui/1.12.1/jquery-ui.min.css");
         HeaderItem bootstrapStyleItem = CssUrlReferenceHeaderItem
                 .forUrl("/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css");
-        CssHeaderItem cmsStyleItem = CssHeaderItem.forReference(cmsStyle);
         CssHeaderItem iconicStyleItem = CssHeaderItem.forReference(iconicStyle);
+        CssHeaderItem cmsStyleItem = CssHeaderItem.forReference(cmsStyle);
         HeaderItem jqueryScriptItem = JavaScriptHeaderItem.forReference(getApplication()
                 .getJavaScriptLibrarySettings().getJQueryReference());
         HeaderItem jQueryUiScriptItem = JavaScriptUrlReferenceHeaderItem
                 .forUrl("/webjars/jquery-ui/1.12.1/jquery-ui.min.js");
         HeaderItem popperScriptItem = JavaScriptUrlReferenceHeaderItem
-                .forUrl("webjars/popper.js/1.12.9-1/umd/popper.min.js");
+                .forUrl("/webjars/popper.js/1.12.9-1/umd/popper.min.js");
         HeaderItem bootstrapScriptItem = JavaScriptUrlReferenceHeaderItem
                 .forUrl("/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js");
         JavaScriptHeaderItem cmsScriptItem = JavaScriptHeaderItem.forReference(cmsScript);
